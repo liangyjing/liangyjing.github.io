@@ -1,0 +1,67 @@
+[
+  {
+    "objectID": "037a1b9d25b58e8e0bcf8816033acb422b049d5d",
+    "permalink": "/post/ns3/",
+    "title": "NS3","content": " NS-3概述 NS-3（Network Simulator 3）是一个用于仿真网络的开源软件工具，主要用于研究和教学。NS-3的设计目标是提供一个灵活、可扩展的平台，以支持各种网络协议和应用的仿真。与早期的网络仿真工具（如NS-2）相比，NS-3在设计上更加现代化，使用C++和Python编写，支持多线程和并行仿真，具有更高的性能和更丰富的功能。\nNS-3的历史与发展 NS-3项目始于2005年，由Dartmouth College的George F. Hines和Tom Henderson等人发起。NS-3的设计初衷是解决NS-2中存在的问题，如代码复杂性、性能瓶颈和扩展性不足。随着时间的推移，NS-3逐渐成为网络仿真领域的重要工具，得到了广泛的使用和贡献。目前，NS-3由一个活跃的社区维护，不断更新和改进，以适应新的网络技术和研究需求。\nNS-3的主要特点 灵活性和可扩展性 ：NS-3的设计允许用户轻松添加新的模块和协议，支持模块化的仿真。 高性能 ：NS-3使用C++编写，支持多线程仿真，可以处理大规模网络仿真任务。 丰富的模块 ：NS-3提供了多种网络仿真模块，包括物理层、链路层、网络层、传输层和应用层等。 详细的文档和社区支持 ：NS-3拥有详细的文档和活跃的社区，用户可以轻松获取帮助和资源。 跨平台支持 ：NS-3可以在多种操作系统上运行，包括Linux、Windows和macOS。 NS-3的应用场景 NS-3广泛应用于以下领域：\n无线通信 ：包括Wi-Fi、LTE、5G等无线网络技术的仿真。 网络协议研究 ：如TCP、UDP、路由协议等。 网络安全 ：仿真攻击和防御策略。 物联网 ：研究和测试IoT设备和网络。 车联网 ：仿真V2V和V2I通信。 基于FlowMonitor 实现：统计包时延、丢包率、流完成时间（FCT）、流吞吐量、网络吞吐量指标 lowMonitor是NS-3中的一个模块，用于监视网络流量，并收集关于数据流的各种统计数据。这些统计数据可以用来评估网络协议或应用的性能。FlowMonitor提供了统一的接口来访问流量相关的度量，如吞吐量、时延、丢包率等。\n平均包时延统计函数 平均包时延统计的原理是遍历FlowMonitor统计的每一条流，其中记录的流中每个包时延信息的总和在it.second.delaySum中，累加记录 …","date": "2025-11-04 08:12:52",
+    "updated": "2025-11-04 10:12:52"
+  }, 
+  {
+    "objectID": "9d54d920e911296985f4c38698fd0349c501d9e6",
+    "permalink": "/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/",
+    "title": "强化学习","content": " 强化学习算法 Q学习(Q-Learning) Q学习是一种强化学习算法，用于解决智能体(agent)在与环境互动的过程中学习如何做出决策以获得最大的累计奖励。它属于无模型(model-free)强化学习方法的一种，这意味着Q学习不需要事先了解环境的具体模型，只需要通过与环境的交互来学习。\nQ学习的目标是学习一个Q值函数，通常简称为Q表(Q-tabel)，其中包含了在每个状态下采取每个动作所获得的期望累计奖励。这个Q表使得智能体可以在每个状态下选择最佳的动作，从而最大化长期奖励。\nQ学习算法思想：QLearning是强化学习算法中value-based的算法，Q即为Q（s,a）就是在某一时刻的 s 状态下(s∈S)，采取 动作a (a∈A)动作能够获得收益的期望，环境会根据agent的动作反馈相应的回报reward r，所以算法的主要思想就是将State与Action构建成一张Q-table来存储Q值，然后根据Q值来选取能够获得最大的收益的动作\nQ-Table a1 a2 s1 q(s1,a1) q(s1,a2) s2 q(s2,a1) q(s2,a2) s3 q(s3,a1) q(s3,a2) ","date": "2025-10-24 10:12:52",
+    "updated": "2025-10-24 13:12:52"
+  }, 
+  {
+    "objectID": "714f0abf20298935dbc88d6927895ba4c65b99f5",
+    "permalink": "/post/wifi%E6%BC%94%E8%BF%9B/",
+    "title": "WiFi1-7的演进过程","content": " wifi标准的演进 802.11 发布年份：1997年 频段：2.4 GHz 最大速率：2 Mbps 调制技术：使用了红外线和无线电频率（RF）作为传输介质，主要采用直接序列扩频（DSSS）和跳频扩频（FHSS）技术。 802.11b 802.11b特性 频段：2.4 GHz\n802.11b在2.4 GHz的工业、科学和医学（ISM）频段上运行，这个频段在全球范围内普遍可用。 最大速率：11 Mbps\n802.11b的最大理论数据传输速率为11 Mbps，实际使用中通常会低于这个速率。 调制技术：直接序列扩频（DSSS）\n使用DSSS技术来传输数据，这种技术有助于减少干扰并提高信号的可靠性。 信道带宽：22 MHz\n802.11b使用22 MHz的信道带宽，通常有三个不重叠的信道可供使用。 覆盖范围：相对较大\n由于使用较低的频率，802.11b的信号覆盖范围相对较大，但容易受到其他2.4 GHz设备（如微波炉、蓝牙设备）的干扰 802.11b的核心技术DSSS(**直接序列扩频-**Direct Sequence Spread Spectrum) DSSS原理：DSSS就是采用高码率的扩频码序列 PN码(伪随机码),在发送端与编码数据信号进行模2加,产生一扩频序列,这一码序列由于码元很窄,占用了很宽的频带,达到扩频的目的,然后用扩频序列去调制载波并予以传输。在接收端接收到的扩频信号经高频放大混频之后,用与发端相同且同步的伪随机码对扩频信号进行相关解扩,由于收发端伪随机码的相关系数为1,故可以完全恢复所传的信息, 而干扰和噪声由于与接收机伪随机码不相关,在相关解调时大大降低进入信号通频带内的干扰。\n发送机模型\n接收机模型\n802.11a 802.11a的特性 频段：5 GHz\n802.11a在5 GHz频段上运行，这一频段通常较少拥挤，能够提供更清晰的信号传输。 最大速率：54 Mbps\n802.11a的最大理论数据传输速率为54 Mbps，与802.11g相同，但比802.11b的11 Mbps有显著提升。 调制技术：正交频分复用（OFDM）\n使用OFDM技术来传输数据，这种技术提高了数据传输效率和速率。 信道带宽：20 MHz\n802.11a使用20 MHz的信道带宽，并提供更多的非重叠信道（通常为8个或更多），这有助于减少干扰。 覆盖范围：相对较小\n由于5 …","date": "2025-10-18 08:16:52",
+    "updated": "2025-10-18 14:12:52"
+  }, 
+  {
+    "objectID": "3a12d6064d454a16c0ecc4b961c1e7862c32d4f4",
+    "permalink": "/post/ns-3-%E4%B8%AD-wifinetdevice-%E7%9A%84%E6%9E%B6%E6%9E%84/",
+    "title": "ns-3 中 WifiNetDevice 的架构","content": "WifiNetDevice架构\n这张图展示了一个Wi-Fi设备从上层应用接收数据包到通过天线发送出去，以及反向从天线接收信号到向上层递交数据包的完整过程。它遵循标准的 OSI模型，清晰地分离了 MAC层 和 PHY层 的功能。\n架构可以分为三个主要部分：\n与上层的接口（最上方） MAC层组件（中间部分） PHY层组件（下方部分） 组件详细说明 1. 与上层的接口 Send(packet, dest, proto) / ForwardUp: 这是Wi-Fi设备与网络栈上层（如网络层）的接口。 Send: 当上层（如IP层）有一个数据包要发送时，它会调用这个函数将数据包传递给Wi-Fi设备。 ForwardUp: 当Wi-Fi设备成功接收到一个目标是本机的数据包时，它会通过这个函数将数据包向上传递给网络层。 2. MAC层组件 MAC层负责信道访问控制、组帧、校验等。\nWifiMac (及其子类 TagMAC, ApWifiMac, StaWifiMac等): 这是MAC层的核心，有不同的实现类来模拟不同的网络角色（如站点STA、接入点AP、自组网节点Adhoc）。 功能：负责处理关联、认证、信标帧发送、探测等MAC层管理功能。数据包的 MAC头 就是在这里添加的。 Txop (Transmission Opportunity): 功能：处理数据包队列，并存储 DCF/EDCA 信道访问参数。在支持 QoS 的设备中，每个接入类别（AC：Voice, Video, Best-Effort, Background）都有一个独立的 Txop 实例。 Enqueue: 从 WifiMac 接收数据包并将其放入相应的队列中等待发送。 ChannelAccessManager: 功能：决定何时可以授予信道访问权。它实现了 CSMA/CA 协议的核心逻辑，监听信道状态（空闲、繁忙），管理退避计时器，当条件满足时，它授权 Txop 进行传输。 FrameExchangeManager: 功能：一个类层次结构，负责处理特定协议标准（如802.11n, 802.11ac）的帧交换序列。例如，它管理一次完整的数据传输，包括 RTS/CTS、数据帧、ACK/BlockAck 的整个握手过程。 BlockAckManager: 功能：管理 BlockAck 协议。当使用块确认（一种提高效率的机 …","date": "2025-10-17 18:12:52",
+    "updated": "2025-10-17 20:12:52"
+  }, 
+  {
+    "objectID": "3b2d12016cb8cd34f8bd747b1a35fd27a826a91b",
+    "permalink": "/post/802.11%E5%8D%8F%E8%AE%AE/",
+    "title": "802.11标准","content": " 调度机制与Qos 调度机制（Scheduling Mechanism） 调度机制是指在网络中如何分配资源（如信道、带宽、计算能力等）给不同的用户或流量的策略和过程。在无线网络中，调度机制主要用于决定哪些用户在何时可以使用无线信道进行数据传输。调度机制的目标通常是提高网络的整体效率、降低延迟、保证公平性或确保特定流量的质量。\n在无线通信中，调度机制可以是：\n基于优先级的调度：根据不同的数据流类型或应用需求，优先安排高优先级的数据流进行传输。例如，实时视频流的优先级可能高于文件下载流。 公平调度：确保所有用户或流量在共享资源（如无线信道）时获得公平的访问机会。 最优化调度：根据网络的负载和信道条件，选择最适合的用户或数据流来进行资源分配，以提高网络整体性能。 在802.11网络中，调度机制会根据不同的服务类别（如数据流、语音、视频等）采取不同的策略，以确保每种类型的流量都能够在网络中有效传输。\nQos（Quality of Service，服务质量） QoS（服务质量）是指网络在数据传输过程中能提供的性能保障，通常涉及以下几个方面：\n带宽保证：保证特定应用或用户所需的最小带宽。 延迟（时延）：数据从源到目的地传输所需的时间。某些应用，如实时语音和视频，要求低延迟以确保良好的用户体验。 抖动（Jitter）：数据包到达的时间变化，抖动较大时会影响实时应用的质量。 丢包率：数据包在传输过程中丢失的比例，较高的丢包率会影响视频和语音质量。 在802.11网络中的QoS 在802.11网络（尤其是802.11e）中，QoS主要通过 EDCA（Enhanced Distributed Channel Access，增强分布式信道接入） 来实现。EDCA允许不同的流量类别（例如语音、视频、数据）在无线网络中获得不同的优先级和服务水平：\n访问类别（Access Category，AC）：802.11e定义了四个访问类别，分别对应不同类型的流量： AC_VO（Voice）：用于语音流量，具有最高的优先级。 AC_VI（Video）：用于视频流量，优先级较高。 AC_BE（Best Effort）：用于普通数据流量，优先级较低。 AC_BK（Background）：用于后台流量，如文件下载，具有最低的优先级。 QoS与调度机制的关系 调度机制是实现QoS的关键工具，通过合理的调度策略来 …","date": "2025-10-17 08:12:52",
+    "updated": "2025-10-17 09:12:52"
+  }, 
+  {
+    "objectID": "91882c8a79c4e39f2f3ef6e4c932c3d0764d534c",
+    "permalink": "/post/the-mac-model/",
+    "title": "The MAC model","content": " The MAC model Infrastructure association 在基础设施模式下的关联操作是由关联管理器执行的一项高级 MAC 功能，该功能通过一个基类（WifiAssocManager）和一个默认子类（WifiDefaultAssocManager）来实现，并由 StaWifiMac 类的 AssocType 属性进行控制。该属性决定了非 AP 的 STA/MLD 是执行传统的关联操作还是与 AP 设备进行 ML 建立（后者仅适用于与多链路 AP 进行关联的 EHT 设备；如果在不符合此条件的情况下选择此选项，系统将自动回退到传统的关联操作）。站 MAC、关联管理器基类和子类之间的交互关系如图所示：扫描过程。\n这个图的过程如下:\n首先STA启动扫描(StartScanning),根据扫描参数过滤掉那些不符合条件的接入点(ap)。当STA接收到来自AP的Beacon或Probe Response帧时，通过NotifyApInfo(apInfo)过程，STA会将这些信息传递给关联管理器(Assoc. Manager)，并将其按照某些排列规则(由子类定义)加入到AP列表中。如果扫描超时（ScanningTimeout），系统会从已排序的AP列表中提取出最佳AP(bestAp)。接下来，默认的关联管理器（Default Assoc. Manager）会决定是否立即结束扫描（EndScanning），如果已获取到 AP 信息，则立即安排对 EndScanning() 函数的调用；否则，在预设的主动/被动扫描时间结束后再进行调用。如果有多个链路可以建立，系统会选择合适的链路，并根据需要调整信道。最后，STA向选定的最佳AP发送关联请求（Send Association Request）以完成连接的建立。\nStartScanning (scanParams)：STA 开始扫描时，会根据传入的参数（如扫描时间、扫描频道等）设置扫描条件。\nSTA 接收到 Beacon/Probe Response frame：此时，STA 接收到 AP (接入点) 发送的 beacon 或 probe 响应帧，其中包含了 AP 的信息。\nNotifyApInfo (apInfo)：NotifyApInfo(apInfo) 是在连接过程中，STA（终端设备）接收到来自接入 …","date": "2025-10-16 08:16:52",
+    "updated": "2025-10-15 17:12:52"
+  }, 
+  {
+    "objectID": "e818a7710b9fe8eafc42b1b37755af9d739e7f73",
+    "permalink": "/post/wifi%E6%A8%A1%E5%9D%97%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90/",
+    "title": "wifi模块代码","content": " wifi的examples代码目录结构 wifi/ ├── CMakeLists.txt ├── examples/ │ ├── reference │ ├── wifi-bianchi.cc │ ├── wifi-co-trace-example.cc │ ├── wifi-manager-example.cc │ ├── wifi-phy-configuration.cc │ ├── wifi-phy-rx-trace-example.cc │ ├── wifi-phy-test.cc │ ├── wifi-test-interference-helper.cc │ ├── wifi-trans-example.cc │ └── wifi-trans-example.sh wifi-bianchi.cc 用于分析 Wi-Fi 网络 的最大吞吐量，特别是 DCF（Distributed Coordination Function） 和 EDCA（Enhanced Distributed Channel Access） 通道接入机制对吞吐量的影响。该程序的核心功能是通过网络仿真，模拟不同数量的节点，进行吞吐量的测量，并生成结果供进一步分析。下图是wifi-bianchi的运行流程图。\nwifi-co-trace-example.cc 这个脚本的核心作用是演示和验证802.11ax标准中的EDCA（Enhanced Distributed Channel Access）机制。它通过创建一个简单的WiFi网络，让多个站点向接入点发送饱和UDP流量，然后利用 WifiCoTraceHelper 来精确测量每个节点在不同物理状态（TX, RX, IDLE, CCA_BUSY, SWITCHING）下所花费的时间。最终，通过对比不同配置下的信道占用情况，直观地展示不同访问类别如何影响节点的信道访问优先级和吞吐量。 这个程序的主要目的是:\n演示802.11ax Wi-Fi网络的基本配置和使用 展示QoS（服务质量）机制对网络性能的影响 说明如何使用WifiCoTraceHelper进行网络性能分析 wifi-manager-example.cc H1 H2 H3 H4 H5 H6 ","date": "2025-10-15 12:12:52",
+    "updated": "2025-10-15 15:12:52"
+  }, 
+  {
+    "objectID": "8eea0d902e7655342a33a800e395bdba6cf49a8b",
+    "permalink": "/post/hugo%E7%95%8C%E9%9D%A2%E5%9B%BE%E7%89%87%E6%9B%B4%E6%8D%A2/",
+    "title": "hugo界面图片更换","content": " hugo界面图片更换 这个图片的更换路径为E:\\Users\\86138\\Desktop\\15\\data\\covers.yml\n","date": "2025-06-09 20:12:52",
+    "updated": "2025-06-09 20:12:52"
+  }, 
+  {
+    "objectID": "5ed179d84b86c06ee87fb512883a7d705d825e81",
+    "permalink": "/post/wireshark%E6%8A%93%E5%8C%85/",
+    "title": "wireshark抓包","content": " hugo界面图片更换 这个图片的更换路径为E:\\Users\\86138\\Desktop\\15\\data\\covers.yml\n","date": "2025-06-09 20:12:52",
+    "updated": "2025-06-09 20:12:52"
+  }, 
+  {
+    "objectID": "504adca92ad95fbf4c471bdb6cbcb300a8685a40",
+    "permalink": "/post/main/",
+    "title": "Markdown Basic Elements","content": " Markdown 基本元素 标题 H1 H2 H3 H4 H5 H6 强调 Emphasis, aka italics, with asterisks or underscores.\nStrong emphasis, aka bold, with asterisks or underscores.\nCombined emphasis with asterisks and underscores.\nStrikethrough uses two tildes. Scratch this.\n列表 Definition List (dl) Ordered List (ol) List Item 1 List Item 2 List Item 3 Unordered List (ul) List Item 1 List Item 2 List Item 3 段落 Lorem ipsum dolor sit amet, test link consectetur adipiscing elit. Strong text pellentesque ligula commodo viverra vehicula. Italic text at ullamcorper enim. Morbi a euismod nibh. Underline text non elit nisl. Deleted text tristique, sem id condimentum tempus, metus lectus venenatis mauris, sit amet semper lorem felis a eros. Fusce egestas nibh at sagittis auctor. Sed ultricies ac arcu quis molestie. Donec dapibus nunc in nibh egestas, vitae volutpat sem iaculis. Curabitur sem tellus, elementum nec quam id, fermentum laoreet mi. Ut mollis ullamcorper turpis, vitae facilisis velit ultricies sit amet. Etiam …","date": "2022-06-09 20:12:52",
+    "updated": "2022-06-09 20:12:52"
+  }, 
+  {
+    "objectID": "5b2d67ec48c6c5df22c2f19c6bc7d175785738cd",
+    "permalink": "/post/chinese/",
+    "title": "中文測試","content": "","date": "2022-06-09 20:12:52",
+    "updated": "2022-06-09 20:12:52"
+  }]

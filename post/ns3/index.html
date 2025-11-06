@@ -1,0 +1,818 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  NS3 | LYJ
+</title>
+<meta
+  name="description"
+  content="NS3了解"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://example.org/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="NS3 | LYJ" />
+  <meta
+    property="og:description"
+    content="NS3了解"
+  />
+  <meta property="og:url" content="https://example.org/post/ns3/" />
+  <meta
+    property="og:site_name"
+    content="My  Hugo Blog"
+  />
+  <meta
+    property="og:image"
+    content="/image/3.JPG"
+  />
+  <meta property="article:author" content="LYJ" />
+  <meta property="article:published_time" content="2025-11-04T08:12:52&#43;08:00" />
+  <meta property="article:modified_time" content="2025-11-04T10:12:52&#43;08:00" /><meta property="article:tag" content="markdowntest" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/image/3.JPG" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.517faddf9413db2abd9c75a19951cf78794508d2844af8518badab01b1144063.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.css"
+    integrity="sha384-5TcZemv2l/9On385z///&#43;d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><img src="/avatar/IMG_3574.JPG" alt="loading" /></div><div class="loading-word">加油搬砖...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/">首页</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/archives">articles</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/about">分类</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/friend">friend</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav></div>
+<header id="header" aria-label="Site header">
+  <picture></picture>
+  <img class="header-media"
+       crossorigin="anonymous"
+       fetchpriority="high"
+       src="/image/3.JPG" 
+       alt="NS3">
+
+
+  <div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">NS3</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ns-3概述">NS-3概述</a>
+      <ul>
+        <li><a href="#ns-3的历史与发展">NS-3的历史与发展</a></li>
+        <li><a href="#ns-3的主要特点">NS-3的主要特点</a></li>
+        <li><a href="#ns-3的应用场景">NS-3的应用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#基于flowmonitor-实现统计包时延丢包率流完成时间fct流吞吐量网络吞吐量指标">基于FlowMonitor 实现：统计包时延、丢包率、流完成时间（FCT）、流吞吐量、网络吞吐量指标</a>
+      <ul>
+        <li><a href="#平均包时延统计函数">平均包时延统计函数</a></li>
+        <li><a href="#丢包率统计函数">丢包率统计函数</a></li>
+        <li><a href="#流完成时间统计函数">流完成时间统计函数</a></li>
+        <li><a href="#流吞吐量统计函数">流吞吐量统计函数</a></li>
+        <li><a href="#网络吞吐量指标">网络吞吐量指标</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/IMG_3574.JPG"
+    data-sizes="auto"
+    alt="LYJ"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">LYJ</div>
+  <div class="sidebar-description">摆烂的lyj...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">11</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      1
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:xxx@gmail.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/liangyjing/liangyjing.github.io"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-google sidebar-social-icon">
+      <a
+        href="https://plus.google.com/yourname"
+        itemprop="url"
+        target="_blank"
+        aria-label="google"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="articles"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">articles</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">分类</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="friend"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">friend</div>
+    </div></div>
+</div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-11-04 08:12:52 &#43;0800 CST" itemprop="datePublished"
+      >2025-11-04</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-11-04</time
+    >
+  </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/test"
+      data-aos="zoom-in"
+      >TEST</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="ns-3概述">
+<a class="header-anchor" href="#ns-3%e6%a6%82%e8%bf%b0"></a>
+NS-3概述
+</h2><p>NS-3（Network Simulator 3）是一个用于仿真网络的开源软件工具，主要用于研究和教学。NS-3的设计目标是提供一个灵活、可扩展的平台，以支持各种网络协议和应用的仿真。与早期的网络仿真工具（如NS-2）相比，NS-3在设计上更加现代化，使用C++和Python编写，支持多线程和并行仿真，具有更高的性能和更丰富的功能。</p>
+<h3 id="ns-3的历史与发展">
+<a class="header-anchor" href="#ns-3%e7%9a%84%e5%8e%86%e5%8f%b2%e4%b8%8e%e5%8f%91%e5%b1%95"></a>
+NS-3的历史与发展
+</h3><p>NS-3项目始于2005年，由Dartmouth College的George F. Hines和Tom Henderson等人发起。NS-3的设计初衷是解决NS-2中存在的问题，如代码复杂性、性能瓶颈和扩展性不足。随着时间的推移，NS-3逐渐成为网络仿真领域的重要工具，得到了广泛的使用和贡献。目前，NS-3由一个活跃的社区维护，不断更新和改进，以适应新的网络技术和研究需求。</p>
+<h3 id="ns-3的主要特点">
+<a class="header-anchor" href="#ns-3%e7%9a%84%e4%b8%bb%e8%a6%81%e7%89%b9%e7%82%b9"></a>
+NS-3的主要特点
+</h3><ol>
+<li><strong>灵活性和可扩展性</strong> ：NS-3的设计允许用户轻松添加新的模块和协议，支持模块化的仿真。</li>
+<li><strong>高性能</strong> ：NS-3使用C++编写，支持多线程仿真，可以处理大规模网络仿真任务。</li>
+<li><strong>丰富的模块</strong> ：NS-3提供了多种网络仿真模块，包括物理层、链路层、网络层、传输层和应用层等。</li>
+<li><strong>详细的文档和社区支持</strong> ：NS-3拥有详细的文档和活跃的社区，用户可以轻松获取帮助和资源。</li>
+<li><strong>跨平台支持</strong> ：NS-3可以在多种操作系统上运行，包括Linux、Windows和macOS。</li>
+</ol>
+<h3 id="ns-3的应用场景">
+<a class="header-anchor" href="#ns-3%e7%9a%84%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af"></a>
+NS-3的应用场景
+</h3><p>NS-3广泛应用于以下领域：</p>
+<ul>
+<li><strong>无线通信</strong> ：包括Wi-Fi、LTE、5G等无线网络技术的仿真。</li>
+<li><strong>网络协议研究</strong> ：如TCP、UDP、路由协议等。</li>
+<li><strong>网络安全</strong> ：仿真攻击和防御策略。</li>
+<li><strong>物联网</strong> ：研究和测试IoT设备和网络。</li>
+<li><strong>车联网</strong> ：仿真V2V和V2I通信。</li>
+</ul>
+<h2 id="基于flowmonitor-实现统计包时延丢包率流完成时间fct流吞吐量网络吞吐量指标">
+<a class="header-anchor" href="#%e5%9f%ba%e4%ba%8eflowmonitor-%e5%ae%9e%e7%8e%b0%e7%bb%9f%e8%ae%a1%e5%8c%85%e6%97%b6%e5%bb%b6%e4%b8%a2%e5%8c%85%e7%8e%87%e6%b5%81%e5%ae%8c%e6%88%90%e6%97%b6%e9%97%b4fct%e6%b5%81%e5%90%9e%e5%90%90%e9%87%8f%e7%bd%91%e7%bb%9c%e5%90%9e%e5%90%90%e9%87%8f%e6%8c%87%e6%a0%87"></a>
+基于FlowMonitor 实现：统计包时延、丢包率、流完成时间（FCT）、流吞吐量、网络吞吐量指标
+</h2><p><code>lowMonitor</code>是NS-3中的一个模块，用于监视网络流量，并收集关于数据流的各种统计数据。这些统计数据可以用来评估网络协议或应用的性能。<code>FlowMonitor</code>提供了统一的接口来访问流量相关的度量，如吞吐量、时延、丢包率等。</p>
+<h3 id="平均包时延统计函数">
+<a class="header-anchor" href="#%e5%b9%b3%e5%9d%87%e5%8c%85%e6%97%b6%e5%bb%b6%e7%bb%9f%e8%ae%a1%e5%87%bd%e6%95%b0"></a>
+平均包时延统计函数
+</h3><p>平均包时延统计的原理是遍历FlowMonitor统计的每一条流，其中记录的流中每个包时延信息的总和在<code>it.second.delaySum</code>中，累加记录到delaySum中，将它除以每条流的接收数据包的数目<code>it.second.rxPackets</code>的总和packetnum，可以得到总的平均包时延。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void ComputePacketDelay(Ptr&lt;FlowMonitor&gt; fm)
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  // 获取统计结果
+</span></span><span class="line"><span class="cl">  FlowMonitor::FlowStatsContainer flowStats = fm-&gt;GetFlowStats();
+</span></span><span class="line"><span class="cl">  //fm-&gt;GetFlowStats() 获取 FlowMonitor 的统计数据，它返回一个 FlowStatsContainer，这个容器包含了网络中每个流的统计信息
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  double delaySum = 0.0;
+</span></span><span class="line"><span class="cl">  int packetnum = 0;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  // 计算每个流的数据包时延
+</span></span><span class="line"><span class="cl">  for (auto it : flowStats)
+</span></span><span class="line"><span class="cl">  {
+</span></span><span class="line"><span class="cl">    if (it.second.txPackets &gt; 0 &amp;&amp; it.second.rxPackets &gt; 0)
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      // 计算平均时延
+</span></span><span class="line"><span class="cl">      packetnum += it.second.rxPackets;
+</span></span><span class="line"><span class="cl">      delaySum += it.second.delaySum.GetSeconds();
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  double overallAverageDelay = delaySum / packetnum * 1000;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  // 计算总体平均包时延
+</span></span><span class="line"><span class="cl">  std::cout &lt;&lt; &#34;Overall Average Packet Delay: &#34; &lt;&lt; overallAverageDelay &lt;&lt; &#34; ms&#34; &lt;&lt; std::endl;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><p>每个流的平均时延是指该流中所有接收到的数据包的平均延迟。它是对单个流的性能进行评估，反映了特定数据流从发送端到接收端的传输延迟。每个流的平均时延是根据该流的发送和接收的数据包进行计算的。</p>
+<p>对于每个流，平均时延可以通过以下方式计算：
+</p>
+$$
+平均时延=接收到的数据包数/所有接收包的总延迟
+$$<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//计算单个流的平均时延
+</span></span><span class="line"><span class="cl">double avgDelay = it.second.delaySum.GetSeconds() / it.second.rxPackets * 1000;  // 单个流的平均时延（毫秒） 
+</span></span><span class="line"><span class="cl">std::cout &lt;&lt; &#34;Flow &#34; &lt;&lt; it.first &lt;&lt; &#34; 平均时延: &#34; &lt;&lt; avgDelay &lt;&lt; &#34; ms&#34; &lt;&lt; std::endl;
+</span></span></code></pre></div><p>在main函数中的具体使用方法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">FlowMonitorHelper fmHelper;  // 创建一个 FlowMonitorHelper 对象
+</span></span><span class="line"><span class="cl">Ptr&lt;FlowMonitor&gt; fm = fmHelper.InstallAll();  // 安装 FlowMonitor 到所有节点
+</span></span><span class="line"><span class="cl">Simulator::Stop (Seconds(1500));
+</span></span><span class="line"><span class="cl">Simulator::Run ();
+</span></span><span class="line"><span class="cl">Simulator::Destroy ();
+</span></span><span class="line"><span class="cl">//统计函数
+</span></span><span class="line"><span class="cl">ComputePacketDelay(fm);
+</span></span><span class="line"><span class="cl">return 0;
+</span></span></code></pre></div><p>在仿真开始之前，我们需要安装 <code>FlowMonitor</code> 来监控网络中的流量，通过 <code>InstallAll()</code> 安装的 <code>FlowMonitor</code> 会在仿真过程中实时监控流量，一直到仿真结束。</p>
+<ul>
+<li><code>FlowMonitorHelper fmHelper</code>：这是一个帮助类，用来简化 <code>FlowMonitor</code> 的安装过程。</li>
+<li><code>fmHelper.InstallAll()</code>：该方法会在仿真中 <strong>所有节点</strong> 上安装 <code>FlowMonitor</code>。它会开始收集网络中所有流的统计数据，包括每个流的传输包、丢失包、延迟等。</li>
+<li><strong><code>fm</code></strong>：这是在仿真开始前安装的 <code>FlowMonitor</code>，它包含了所有流的统计信息。</li>
+<li><strong><code>ComputePacketDelay(fm)</code></strong>：这个函数会访问 <code>FlowMonitor</code> 中保存的流量数据，并计算并输出每个流的平均时延或其他相关统计结果。</li>
+</ul>
+<h3 id="丢包率统计函数">
+<a class="header-anchor" href="#%e4%b8%a2%e5%8c%85%e7%8e%87%e7%bb%9f%e8%ae%a1%e5%87%bd%e6%95%b0"></a>
+丢包率统计函数
+</h3><p>丢包率统计函数的原理是遍历FlowMonitor统计的每一条流，其中记录的流中发送包的数目在<code>it.second.txPackets</code>中，减去记录的被接收的包数量<code>it.second.rxPackets</code>即可得到丢包数目，除以总发包数即为丢包率。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void ComputePacketLossRate(Ptr&lt;FlowMonitor&gt; fm)
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  // 获取统计结果
+</span></span><span class="line"><span class="cl">  FlowMonitor::FlowStatsContainer flowStats = fm-&gt;GetFlowStats();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  uint32_t totalSentPackets = 0;
+</span></span><span class="line"><span class="cl">  uint32_t totalReceivedPackets = 0;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  // 计算每个流的数据包发送和接收数量
+</span></span><span class="line"><span class="cl">  for (auto it : flowStats)
+</span></span><span class="line"><span class="cl">  {
+</span></span><span class="line"><span class="cl">    if (it.second.txPackets &gt; 0)
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      totalSentPackets += it.second.txPackets;
+</span></span><span class="line"><span class="cl">      totalReceivedPackets += it.second.rxPackets;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  // 计算丢包率
+</span></span><span class="line"><span class="cl">  uint32_t lostPackets = totalSentPackets - totalReceivedPackets;
+</span></span><span class="line"><span class="cl">  double packetLossRate = static_cast&lt;double&gt;(lostPackets) / totalSentPackets * 100.0;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  std::cout &lt;&lt; &#34;Total Sent Packets: &#34; &lt;&lt; totalSentPackets &lt;&lt; std::endl;
+</span></span><span class="line"><span class="cl">  // std::cout &lt;&lt; &#34;Total Received Packets: &#34; &lt;&lt; totalReceivedPackets &lt;&lt; std::endl;
+</span></span><span class="line"><span class="cl">  // std::cout &lt;&lt; &#34;Lost Packets: &#34; &lt;&lt; lostPackets &lt;&lt; std::endl;
+</span></span><span class="line"><span class="cl">  std::cout &lt;&lt; &#34;Packet Loss Rate: &#34; &lt;&lt; packetLossRate &lt;&lt; &#34;%&#34; &lt;&lt; std::endl;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><h3 id="流完成时间统计函数">
+<a class="header-anchor" href="#%e6%b5%81%e5%ae%8c%e6%88%90%e6%97%b6%e9%97%b4%e7%bb%9f%e8%ae%a1%e5%87%bd%e6%95%b0"></a>
+流完成时间统计函数
+</h3><p>流完成时间统计函数的原理是遍历FlowMonitor统计的每一条流，其中记录的流中收到最后一个包<code>it.second.timeLastRxPacket</code>减去第一个包发送的时间<code>it.second.timeFirstTxPacket</code>可以得到流完成时间。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void ComputeFlowCompleteTime(FlowMonitorHelper &amp;fmHelper, Ptr&lt;FlowMonitor&gt; fm)
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  // 获取统计结果
+</span></span><span class="line"><span class="cl">  FlowMonitor::FlowStatsContainer flowStats = fm-&gt;GetFlowStats();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  // 计算完成时间
+</span></span><span class="line"><span class="cl">  double totalThroughput = 0.0;
+</span></span><span class="line"><span class="cl">  double fct = 0;
+</span></span><span class="line"><span class="cl">  int validFlows = 0;
+</span></span><span class="line"><span class="cl">  for (auto it : flowStats)
+</span></span><span class="line"><span class="cl">  {
+</span></span><span class="line"><span class="cl">    if (it.second.txBytes &gt; 0)
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      fct += (it.second.timeLastRxPacket - it.second.timeFirstTxPacket).GetSeconds ()*1e3;//单位为毫秒
+</span></span><span class="line"><span class="cl">      validFlows++;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  std::cout &lt;&lt; &#34;FCT: &#34; &lt;&lt; fct/validFlows &lt;&lt; &#34; ms&#34; &lt;&lt; std::endl;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><h3 id="流吞吐量统计函数">
+<a class="header-anchor" href="#%e6%b5%81%e5%90%9e%e5%90%90%e9%87%8f%e7%bb%9f%e8%ae%a1%e5%87%bd%e6%95%b0"></a>
+流吞吐量统计函数
+</h3><p>流吞吐量统计函数的原理是遍历FlowMonitor统计的每一条流，其中记录的流中收到最后一个包it.second.timeLastRxPacket减去第一个包发送的时间it.second.timeFirstTxPacket可以得到流完成时间，用流的接收数据量it.second.rxBytes（单位是B字节，记得乘以8换算成bytes）除以流完成时间，即可得到流吞吐量。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void ComputeFlowThroughput(FlowMonitorHelper &amp;fmHelper, Ptr&lt;FlowMonitor&gt; fm)
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  // 获取统计结果
+</span></span><span class="line"><span class="cl">  FlowMonitor::FlowStatsContainer flowStats = fm-&gt;GetFlowStats();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  // 计算总吞吐量
+</span></span><span class="line"><span class="cl">  double totalThroughput = 0.0;
+</span></span><span class="line"><span class="cl">  int validFlows = 0;
+</span></span><span class="line"><span class="cl">  for (auto it : flowStats)
+</span></span><span class="line"><span class="cl">  {
+</span></span><span class="line"><span class="cl">    if (it.second.txBytes &gt; 0)
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      // 确保时间间隔非零
+</span></span><span class="line"><span class="cl">      Time duration = it.second.timeLastRxPacket - it.second.timeFirstTxPacket;
+</span></span><span class="line"><span class="cl">      if (duration.GetSeconds() &gt; 0)
+</span></span><span class="line"><span class="cl">      {
+</span></span><span class="line"><span class="cl">        double throughput = it.second.rxBytes * 8.0 / duration.GetSeconds() / 1024 / 1024; // 比特转换为Mbps
+</span></span><span class="line"><span class="cl">        totalThroughput += throughput;
+</span></span><span class="line"><span class="cl">        //std::cout &lt;&lt; &#34;Flow ID: &#34; &lt;&lt; it.first &lt;&lt; &#34;, Throughput: &#34; &lt;&lt; throughput &lt;&lt; &#34; Mbps&#34; &lt;&lt; std::endl;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">      validFlows++;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  std::cout &lt;&lt; &#34;Total Network Throughput: &#34; &lt;&lt; totalThroughput &lt;&lt; &#34; Mbps&#34; &lt;&lt; std::endl;
+</span></span><span class="line"><span class="cl">  std::cout &lt;&lt; &#34;Avg Network Throughput: &#34; &lt;&lt; totalThroughput/validFlows &lt;&lt; &#34; Mbps&#34; &lt;&lt; std::endl;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><h3 id="网络吞吐量指标">
+<a class="header-anchor" href="#%e7%bd%91%e7%bb%9c%e5%90%9e%e5%90%90%e9%87%8f%e6%8c%87%e6%a0%87"></a>
+网络吞吐量指标
+</h3><p>网络吞吐量一般被定义为网络单位时间内接收到的数据量，首先统计接收总数据量，是流接收量<code>it.second.rxBytes</code>的累加，之后计算最大的<code>it.second.timeLastRxPacket</code>，为网络收到最后一个包的时间，总接收量除以完成时间即可得到网络吞吐量。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void ComputeNetThroughput(FlowMonitorHelper &amp;fmHelper, Ptr&lt;FlowMonitor&gt; fm)
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  // 获取统计结果
+</span></span><span class="line"><span class="cl">  FlowMonitor::FlowStatsContainer flowStats = fm-&gt;GetFlowStats();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  // 计算总吞吐量
+</span></span><span class="line"><span class="cl">  double totalrxbyte = 0.0;
+</span></span><span class="line"><span class="cl">  double lastfct = 0;
+</span></span><span class="line"><span class="cl">  for (auto it : flowStats)
+</span></span><span class="line"><span class="cl">  {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    if (it.second.txBytes &gt; 0)
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      // 确保时间间隔非零
+</span></span><span class="line"><span class="cl">      Time duration = it.second.timeLastRxPacket - it.second.timeFirstTxPacket;
+</span></span><span class="line"><span class="cl">      if (duration.GetSeconds() &gt; 0)
+</span></span><span class="line"><span class="cl">      {
+</span></span><span class="line"><span class="cl">        double rxbyte = it.second.txBytes * 8.0; // 比特
+</span></span><span class="line"><span class="cl">        totalrxbyte += rxbyte;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      if(it.second.timeLastRxPacket.GetSeconds() &gt; lastfct){
+</span></span><span class="line"><span class="cl">        lastfct = it.second.timeLastRxPacket.GetSeconds();
+</span></span><span class="line"><span class="cl">        //lastfct 用于记录最后一个接收包的时间。这里通过 timeLastRxPacket.GetSeconds() 获取流的最后接收时间，并更新 lastfct
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  std::cout &lt;&lt; &#34;Network Throughput: &#34; &lt;&lt; totalrxbyte/lastfct/1024/1024 &lt;&lt; &#34;Mbps&#34; &lt;&lt; std::endl;
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><p>在计算吞吐量时，使用 <strong><code>timeLastRxPacket</code></strong> 作为 <strong>流的持续时间</strong> 是因为：</p>
+<ol>
+<li><strong>网络吞吐量的定义</strong> 是单位时间内传输的数据量。因此，我们需要知道流 <strong>实际传输数据的时长</strong>，即从开始传输到所有数据接收完成的时间。</li>
+<li><strong>最后接收到的包</strong> 表示流传输的 <strong>结束时刻</strong>，它标志着数据传输的完整性。没有收到最后一个包，就意味着数据流传输未完全结束，吞吐量也无法计算</li>
+</ol>
+</div>
+    <footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/markdown"
+        rel="tag"
+        >MARKDOWN</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/test"
+        rel="tag"
+        >TEST</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+            data-src="/image/2.JPG"
+            data-sizes="auto"
+            alt="强化学习"
+            class="lazyload"
+          /><a
+          href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"
+          aria-label="前一篇:强化学习"
+          title="前一篇:强化学习"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">强化学习</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      LYJ
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;17.4k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;00:40</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ns-3概述">NS-3概述</a>
+      <ul>
+        <li><a href="#ns-3的历史与发展">NS-3的历史与发展</a></li>
+        <li><a href="#ns-3的主要特点">NS-3的主要特点</a></li>
+        <li><a href="#ns-3的应用场景">NS-3的应用场景</a></li>
+      </ul>
+    </li>
+    <li><a href="#基于flowmonitor-实现统计包时延丢包率流完成时间fct流吞吐量网络吞吐量指标">基于FlowMonitor 实现：统计包时延、丢包率、流完成时间（FCT）、流吞吐量、网络吞吐量指标</a>
+      <ul>
+        <li><a href="#平均包时延统计函数">平均包时延统计函数</a></li>
+        <li><a href="#丢包率统计函数">丢包率统计函数</a></li>
+        <li><a href="#流完成时间统计函数">流完成时间统计函数</a></li>
+        <li><a href="#流吞吐量统计函数">流吞吐量统计函数</a></li>
+        <li><a href="#网络吞吐量指标">网络吞吐量指标</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/IMG_3574.JPG"
+    data-sizes="auto"
+    alt="LYJ"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">LYJ</div>
+  <div class="sidebar-description">摆烂的lyj...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">11</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      1
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:xxx@gmail.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/liangyjing/liangyjing.github.io"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-google sidebar-social-icon">
+      <a
+        href="https://plus.google.com/yourname"
+        itemprop="url"
+        target="_blank"
+        aria-label="google"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="articles"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">articles</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">分类</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="friend"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">friend</div>
+    </div></div>
+</div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><meting-js
+        theme="var(--color-link)"
+        id="2265921590"server="qq"type="song"auto="true"fixed="true">
+      </meting-js><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js"
+    integrity="sha384-vLev0II0HKFaxkcm&#43;/7kX5IGwVFBASkGchU311wmU/veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "LYJ",
+          title: "NS3",
+          url: "https:\/\/example.org\/post\/ns3\/",
+          description: "NS3了解",
+          cover: "https:\/\/example.org\/image\/3.JPG",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.js"
+    data-pjaxintegrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc&#43;T1b2N&#43;teh/OJfpU0jr6" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/contrib/auto-render.min.js"
+    data-pjaxintegrity="sha384-hCXGrW6PitJEwbkoStFjeJxv&#43;fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script><script data-pjax>
+          var renderMath = () => {
+            if (!window.renderMathInElement) return;
+            window.renderMathInElement(_$("article"), {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+              ],
+            });
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderMath, { once: true });
+          } else {
+            renderMath();
+          }
+        </script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script>
+      var meting_api = 'https:\/\/api.metatable.com';
+    </script><script>
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      const meting = _$('meting-js');
+      if (meting) {
+        meting.setAttribute('fixed', 'true');
+        const aside = meting.parentNode?.parentNode;
+        if (aside?.tagName === 'ASIDE') {
+          meting.parentNode.removeChild(meting);
+          document.body.appendChild(meting);
+        }
+      }
+    }
+  </script><script
+    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"></script></body>
+</html>

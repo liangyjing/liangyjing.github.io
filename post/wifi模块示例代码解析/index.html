@@ -1,0 +1,627 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  wifi模块代码 | LYJ
+</title>
+<meta
+  name="description"
+  content="wifi模块"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://example.org/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="wifi模块代码 | LYJ" />
+  <meta
+    property="og:description"
+    content="wifi模块"
+  />
+  <meta property="og:url" content="https://example.org/post/wifi%E6%A8%A1%E5%9D%97%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90/" />
+  <meta
+    property="og:site_name"
+    content="My  Hugo Blog"
+  />
+  <meta
+    property="og:image"
+    content="/image/4.JPG"
+  />
+  <meta property="article:author" content="LYJ" />
+  <meta property="article:published_time" content="2025-10-15T12:12:52&#43;08:00" />
+  <meta property="article:modified_time" content="2025-10-15T15:12:52&#43;08:00" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/image/4.JPG" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.517faddf9413db2abd9c75a19951cf78794508d2844af8518badab01b1144063.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.css"
+    integrity="sha384-5TcZemv2l/9On385z///&#43;d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><img src="/avatar/IMG_3574.JPG" alt="loading" /></div><div class="loading-word">加油搬砖...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/">首页</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/archives">articles</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/about">分类</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/friend">friend</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav></div>
+<header id="header" aria-label="Site header">
+  <picture></picture>
+  <img class="header-media"
+       crossorigin="anonymous"
+       fetchpriority="high"
+       src="/image/4.JPG" 
+       alt="wifi模块代码">
+
+
+  <div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">wifi模块代码</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#wifi的examples代码目录结构">wifi的examples代码目录结构</a>
+      <ul>
+        <li><a href="#wifi-bianchicc">wifi-bianchi.cc</a></li>
+        <li><a href="#wifi-co-trace-examplecc">wifi-co-trace-example.cc</a></li>
+        <li><a href="#wifi-manager-examplecc">wifi-manager-example.cc</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#h2">H2</a>
+      <ul>
+        <li><a href="#h3">H3</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/IMG_3574.JPG"
+    data-sizes="auto"
+    alt="LYJ"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">LYJ</div>
+  <div class="sidebar-description">摆烂的lyj...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">11</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      1
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:xxx@gmail.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/liangyjing/liangyjing.github.io"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-google sidebar-social-icon">
+      <a
+        href="https://plus.google.com/yourname"
+        itemprop="url"
+        target="_blank"
+        aria-label="google"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="articles"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">articles</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">分类</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="friend"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">friend</div>
+    </div></div>
+</div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-10-15 12:12:52 &#43;0800 CST" itemprop="datePublished"
+      >2025-10-15</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-10-15</time
+    >
+  </span></div>
+<div class="article-category"></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="wifi的examples代码目录结构">
+<a class="header-anchor" href="#wifi%e7%9a%84examples%e4%bb%a3%e7%a0%81%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84"></a>
+wifi的examples代码目录结构
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wifi/
+</span></span><span class="line"><span class="cl">├── CMakeLists.txt
+</span></span><span class="line"><span class="cl">├── examples/
+</span></span><span class="line"><span class="cl">│   ├── reference
+</span></span><span class="line"><span class="cl">│   ├── wifi-bianchi.cc
+</span></span><span class="line"><span class="cl">│   ├── wifi-co-trace-example.cc
+</span></span><span class="line"><span class="cl">│   ├── wifi-manager-example.cc
+</span></span><span class="line"><span class="cl">│   ├── wifi-phy-configuration.cc
+</span></span><span class="line"><span class="cl">│   ├── wifi-phy-rx-trace-example.cc
+</span></span><span class="line"><span class="cl">│   ├── wifi-phy-test.cc
+</span></span><span class="line"><span class="cl">│   ├── wifi-test-interference-helper.cc
+</span></span><span class="line"><span class="cl">│   ├── wifi-trans-example.cc
+</span></span><span class="line"><span class="cl">│   └── wifi-trans-example.sh
+</span></span></code></pre></div><h3 id="wifi-bianchicc">
+<a class="header-anchor" href="#wifi-bianchicc"></a>
+wifi-bianchi.cc
+</h3><p>用于分析 Wi-Fi 网络 的最大吞吐量，特别是 DCF（Distributed Coordination Function） 和 EDCA（Enhanced Distributed Channel Access） 通道接入机制对吞吐量的影响。该程序的核心功能是通过网络仿真，模拟不同数量的节点，进行吞吐量的测量，并生成结果供进一步分析。下图是wifi-bianchi的运行流程图。</p>
+<p><img src="/image/wifi-bianchi.png" alt="wifi-bianchi运行流程图"></p>
+<h3 id="wifi-co-trace-examplecc">
+<a class="header-anchor" href="#wifi-co-trace-examplecc"></a>
+wifi-co-trace-example.cc
+</h3><p>这个脚本的核心作用是演示和验证802.11ax标准中的EDCA（Enhanced Distributed Channel Access）机制。它通过创建一个简单的WiFi网络，让多个站点向接入点发送饱和UDP流量，然后利用 WifiCoTraceHelper 来精确测量每个节点在不同物理状态（TX, RX, IDLE, CCA_BUSY, SWITCHING）下所花费的时间。最终，通过对比不同配置下的信道占用情况，直观地展示不同访问类别如何影响节点的信道访问优先级和吞吐量。
+这个程序的主要目的是:</p>
+<ol>
+<li>演示802.11ax Wi-Fi网络的基本配置和使用</li>
+<li>展示QoS（服务质量）机制对网络性能的影响</li>
+<li>说明如何使用WifiCoTraceHelper进行网络性能分析</li>
+</ol>
+<h3 id="wifi-manager-examplecc">
+<a class="header-anchor" href="#wifi-manager-examplecc"></a>
+wifi-manager-example.cc
+</h3><h1 id="h1">
+<a class="header-anchor" href="#h1"></a>
+H1
+</h1><h2 id="h2">
+<a class="header-anchor" href="#h2"></a>
+H2
+</h2><h3 id="h3">
+<a class="header-anchor" href="#h3"></a>
+H3
+</h3><h4 id="h4">
+<a class="header-anchor" href="#h4"></a>
+H4
+</h4><h5 id="h5">
+<a class="header-anchor" href="#h5"></a>
+H5
+</h5><h6 id="h6">
+<a class="header-anchor" href="#h6"></a>
+H6
+</h6></div>
+    <footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+            data-src="/image/2.JPG"
+            data-sizes="auto"
+            alt="hugo界面图片更换"
+            class="lazyload"
+          /><a
+          href="/post/hugo%E7%95%8C%E9%9D%A2%E5%9B%BE%E7%89%87%E6%9B%B4%E6%8D%A2/"
+          aria-label="前一篇:hugo界面图片更换"
+          title="前一篇:hugo界面图片更换"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">hugo界面图片更换</h3>
+      </div><div class="article-nav-link-wrap right"><img
+            data-src="/image/1.JPG"
+            data-sizes="auto"
+            alt="The MAC model"
+            class="lazyload"
+          /><a
+          href="/post/the-mac-model/"
+          aria-label="后一篇:The MAC model"
+          title="后一篇:The MAC model"
+        ></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">The MAC model</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      LYJ
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;17.4k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;00:40</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#wifi的examples代码目录结构">wifi的examples代码目录结构</a>
+      <ul>
+        <li><a href="#wifi-bianchicc">wifi-bianchi.cc</a></li>
+        <li><a href="#wifi-co-trace-examplecc">wifi-co-trace-example.cc</a></li>
+        <li><a href="#wifi-manager-examplecc">wifi-manager-example.cc</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#h2">H2</a>
+      <ul>
+        <li><a href="#h3">H3</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/IMG_3574.JPG"
+    data-sizes="auto"
+    alt="LYJ"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">LYJ</div>
+  <div class="sidebar-description">摆烂的lyj...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">11</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      1
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:xxx@gmail.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/liangyjing/liangyjing.github.io"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-google sidebar-social-icon">
+      <a
+        href="https://plus.google.com/yourname"
+        itemprop="url"
+        target="_blank"
+        aria-label="google"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="articles"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">articles</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">分类</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="friend"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">friend</div>
+    </div></div>
+</div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><meting-js
+        theme="var(--color-link)"
+        id="2265921590"server="qq"type="song"auto="true"fixed="true">
+      </meting-js><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js"
+    integrity="sha384-vLev0II0HKFaxkcm&#43;/7kX5IGwVFBASkGchU311wmU/veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "LYJ",
+          title: "wifi模块代码",
+          url: "https:\/\/example.org\/post\/wifi%E6%A8%A1%E5%9D%97%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90\/",
+          description: "wifi模块",
+          cover: "https:\/\/example.org\/image\/4.JPG",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script>
+      var meting_api = 'https:\/\/api.metatable.com';
+    </script><script>
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      const meting = _$('meting-js');
+      if (meting) {
+        meting.setAttribute('fixed', 'true');
+        const aside = meting.parentNode?.parentNode;
+        if (aside?.tagName === 'ASIDE') {
+          meting.parentNode.removeChild(meting);
+          document.body.appendChild(meting);
+        }
+      }
+    }
+  </script><script
+    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"></script></body>
+</html>

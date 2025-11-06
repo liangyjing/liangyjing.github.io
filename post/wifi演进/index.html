@@ -1,0 +1,943 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  WiFi1-7的演进过程 | LYJ
+</title>
+<meta
+  name="description"
+  content="对The MAC modeld的理解"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://example.org/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="WiFi1-7的演进过程 | LYJ" />
+  <meta
+    property="og:description"
+    content="对The MAC modeld的理解"
+  />
+  <meta property="og:url" content="https://example.org/post/wifi%E6%BC%94%E8%BF%9B/" />
+  <meta
+    property="og:site_name"
+    content="My  Hugo Blog"
+  />
+  <meta
+    property="og:image"
+    content="/image/1.JPG"
+  />
+  <meta property="article:author" content="LYJ" />
+  <meta property="article:published_time" content="2025-10-18T08:16:52&#43;08:00" />
+  <meta property="article:modified_time" content="2025-10-18T14:12:52&#43;08:00" /><meta property="article:tag" content="markdowntest" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/image/1.JPG" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.517faddf9413db2abd9c75a19951cf78794508d2844af8518badab01b1144063.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.css"
+    integrity="sha384-5TcZemv2l/9On385z///&#43;d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><img src="/avatar/IMG_3574.JPG" alt="loading" /></div><div class="loading-word">加油搬砖...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/">首页</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/archives">articles</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/about">分类</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/friend">friend</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav></div>
+<header id="header" aria-label="Site header">
+  <picture></picture>
+  <img class="header-media"
+       crossorigin="anonymous"
+       fetchpriority="high"
+       src="/image/1.JPG" 
+       alt="WiFi1-7的演进过程">
+
+
+  <div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">WiFi1-7的演进过程</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#wifi标准的演进">wifi标准的演进</a>
+      <ul>
+        <li><a href="#80211">802.11</a></li>
+        <li><a href="#80211b">802.11b</a></li>
+        <li><a href="#80211a">802.11a</a></li>
+        <li><a href="#80211g">802.11g</a></li>
+        <li><a href="#80211nwifi4">802.11n(wifi4)</a></li>
+        <li><a href="#80211acwifi5">802.11ac(wifi5)</a></li>
+        <li><a href="#80211axwifi6">802.11ax(wifi6)</a></li>
+        <li><a href="#80211bewifi7">802.11be(wifi7)</a></li>
+      </ul>
+    </li>
+    <li><a href="#兼容性">兼容性</a></li>
+    <li><a href="#wifi发展过程中的更新和改进">WiFi发展过程中的更新和改进</a>
+      <ul>
+        <li><a href="#物理层技术">物理层技术</a></li>
+        <li><a href="#主要更新和改进">主要更新和改进</a></li>
+        <li><a href="#从mimo到mu-mimo">从MIMO到MU-MIMO</a></li>
+        <li><a href="#从ofdm到ofdma">从OFDM到OFDMA</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/IMG_3574.JPG"
+    data-sizes="auto"
+    alt="LYJ"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">LYJ</div>
+  <div class="sidebar-description">摆烂的lyj...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">11</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      1
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:xxx@gmail.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/liangyjing/liangyjing.github.io"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-google sidebar-social-icon">
+      <a
+        href="https://plus.google.com/yourname"
+        itemprop="url"
+        target="_blank"
+        aria-label="google"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="articles"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">articles</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">分类</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="friend"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">friend</div>
+    </div></div>
+</div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-10-18 08:16:52 &#43;0800 CST" itemprop="datePublished"
+      >2025-10-18</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-10-18</time
+    >
+  </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/test"
+      data-aos="zoom-in"
+      >TEST</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="wifi标准的演进">
+<a class="header-anchor" href="#wifi%e6%a0%87%e5%87%86%e7%9a%84%e6%bc%94%e8%bf%9b"></a>
+wifi标准的演进
+</h2><h3 id="80211">
+<a class="header-anchor" href="#80211"></a>
+802.11
+</h3><ul>
+<li><strong>发布年份</strong>：1997年</li>
+<li><strong>频段</strong>：2.4 GHz</li>
+<li><strong>最大速率</strong>：2 Mbps</li>
+<li><strong>调制技术</strong>：使用了红外线和无线电频率（RF）作为传输介质，主要采用直接序列扩频（DSSS）和跳频扩频（FHSS）技术。</li>
+</ul>
+<h3 id="80211b">
+<a class="header-anchor" href="#80211b"></a>
+802.11b
+</h3><h4 id="80211b特性">
+<a class="header-anchor" href="#80211b%e7%89%b9%e6%80%a7"></a>
+802.11b特性
+</h4><ul>
+<li>
+<p><strong>频段</strong>：2.4 GHz</p>
+<ul>
+<li>802.11b在2.4 GHz的工业、科学和医学（ISM）频段上运行，这个频段在全球范围内普遍可用。</li>
+</ul>
+</li>
+<li>
+<p><strong>最大速率</strong>：11 Mbps</p>
+<ul>
+<li>802.11b的最大理论数据传输速率为11 Mbps，实际使用中通常会低于这个速率。</li>
+</ul>
+</li>
+<li>
+<p><strong>调制技术</strong>：直接序列扩频（DSSS）</p>
+<ul>
+<li>使用DSSS技术来传输数据，这种技术有助于减少干扰并提高信号的可靠性。</li>
+</ul>
+</li>
+<li>
+<p><strong>信道带宽</strong>：22 MHz</p>
+<ul>
+<li>802.11b使用22 MHz的信道带宽，通常有三个不重叠的信道可供使用。</li>
+</ul>
+</li>
+<li>
+<p><strong>覆盖范围</strong>：相对较大</p>
+<ul>
+<li>由于使用较低的频率，802.11b的信号覆盖范围相对较大，但容易受到其他2.4 GHz设备（如微波炉、蓝牙设备）的干扰</li>
+</ul>
+</li>
+</ul>
+<h4 id="80211b的核心技术dsss直接序列扩频-direct-sequence-spread-spectrum">
+<a class="header-anchor" href="#80211b%e7%9a%84%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%afdsss%e7%9b%b4%e6%8e%a5%e5%ba%8f%e5%88%97%e6%89%a9%e9%a2%91-direct-sequence-spread-spectrum"></a>
+802.11b的核心技术DSSS(**直接序列扩频-**Direct Sequence Spread Spectrum)
+</h4><p>DSSS原理：DSSS就是采用高码率的扩频码序列 PN码(伪随机码),在发送端与编码数据信号进行模2加,产生一扩频序列,这一码序列由于码元很窄,占用了很宽的频带,达到扩频的目的,然后用扩频序列去调制载波并予以传输。在接收端接收到的扩频信号经高频放大混频之后,用与发端相同且同步的伪随机码对扩频信号进行相关解扩,由于收发端伪随机码的相关系数为1,故可以完全恢复所传的信息, 而干扰和噪声由于与接收机伪随机码不相关,在相关解调时大大降低进入信号通频带内的干扰。</p>
+<p>发送机模型</p>
+<p><img src="/image/%E6%A8%A1%E5%9D%97%E5%9B%BE/%E5%8F%91%E9%80%81%E6%9C%BA.png" alt=""></p>
+<p>接收机模型</p>
+<p><img src="/image/%E6%A8%A1%E5%9D%97%E5%9B%BE/%E6%8E%A5%E6%94%B6%E6%9C%BA.png" alt=""></p>
+<h3 id="80211a">
+<a class="header-anchor" href="#80211a"></a>
+802.11a
+</h3><h4 id="80211a的特性">
+<a class="header-anchor" href="#80211a%e7%9a%84%e7%89%b9%e6%80%a7"></a>
+802.11a的特性
+</h4><ul>
+<li>
+<p><strong>频段</strong>：5 GHz</p>
+<ul>
+<li>802.11a在5 GHz频段上运行，这一频段通常较少拥挤，能够提供更清晰的信号传输。</li>
+</ul>
+</li>
+<li>
+<p><strong>最大速率</strong>：54 Mbps</p>
+<ul>
+<li>802.11a的最大理论数据传输速率为54 Mbps，与802.11g相同，但比802.11b的11 Mbps有显著提升。</li>
+</ul>
+</li>
+<li>
+<p><strong>调制技术</strong>：正交频分复用（OFDM）</p>
+<ul>
+<li>使用OFDM技术来传输数据，这种技术提高了数据传输效率和速率。</li>
+</ul>
+</li>
+<li>
+<p><strong>信道带宽</strong>：20 MHz</p>
+<ul>
+<li>802.11a使用20 MHz的信道带宽，并提供更多的非重叠信道（通常为8个或更多），这有助于减少干扰。</li>
+</ul>
+</li>
+<li>
+<p><strong>覆盖范围</strong>：相对较小</p>
+<ul>
+<li>由于5 GHz频段的信号衰减较快，802.11a的覆盖范围通常小于2.4 GHz频段的标准（如802.11b/g）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="80211a的核心技术ofdmorthogonal-frequency-division-multiplexing正交频分复用">
+<a class="header-anchor" href="#80211a%e7%9a%84%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%afofdmorthogonal-frequency-division-multiplexing%e6%ad%a3%e4%ba%a4%e9%a2%91%e5%88%86%e5%a4%8d%e7%94%a8"></a>
+802.11a的核心技术OFDM(<strong>Orthogonal Frequency Division Multiplexing</strong>，正交频分复用）
+</h4><p>OFDM的基本原理就是把高速的数据流通过串并转换，变换成低速率的 N 路并行数据流,然后用 N 个相互正交的载波进行调制,将 N 路调制后的信号相加即得发射信号。它可以被看做一种调制技术，也可以被当做一种复用技术，一个OFDM符号包括多个经过调制的子载波。</p>
+<p><strong>正交性</strong>：子载波之间相互正交，意味着它们在频域上相互独立且不会互相干扰。子载波的频率间隔是精心设计的，使得它们在接收端可以完全分开，确保无干扰。</p>
+<p><strong>子载波</strong>：每个子载波的传输速率较低，这样可以减少符号间干扰（ISI），并使信号在复杂信道中能够更加可靠地传输</p>
+<h3 id="80211g">
+<a class="header-anchor" href="#80211g"></a>
+802.11g
+</h3><h4 id="80211g的特性">
+<a class="header-anchor" href="#80211g%e7%9a%84%e7%89%b9%e6%80%a7"></a>
+802.11g的特性
+</h4><ul>
+<li>
+<p><strong>频段</strong>：2.4 GHz</p>
+<ul>
+<li>802.11g在2.4 GHz的频段上运行，与802.11b相同，这使得它能够与802.11b设备兼容。</li>
+</ul>
+</li>
+<li>
+<p><strong>最大速率</strong>：54 Mbps</p>
+<ul>
+<li>802.11g的最大理论数据传输速率为54 Mbps，比802.11b的11 Mbps有显著提升。</li>
+</ul>
+</li>
+<li>
+<p><strong>调制技术</strong>：正交频分复用（OFDM）</p>
+<ul>
+<li>使用OFDM技术来传输数据，这种技术提高了数据传输效率和速率。</li>
+</ul>
+</li>
+<li>
+<p><strong>信道带宽</strong>：20 MHz</p>
+<ul>
+<li>802.11g使用20 MHz的信道带宽，通常有三个不重叠的信道可供使用。</li>
+</ul>
+</li>
+<li>
+<p><strong>兼容性</strong>：向后兼容802.11b80</p>
+<ul>
+<li>802.11g设备可以与802.11b设备一起工作，但在混合网络中，整体网络性能可能会受到较慢设备的限制。</li>
+</ul>
+</li>
+</ul>
+<h3 id="80211nwifi4">
+<a class="header-anchor" href="#80211nwifi4"></a>
+802.11n(wifi4)
+</h3><p><strong>MIMO：multi-input multi-output，多输入多输出。</strong> 例如在发送端和接收端分别增加多个天线同时发送和接收多个信号。</p>
+<p><img src="/image/%E6%A8%A1%E5%9D%97%E5%9B%BE/MIMO.png" alt=""></p>
+<p><strong>优点</strong> ：MIMO 技术允许多个天线同时发送和接收多个信号，并能够 <strong>区分发往或来自不同空间方位</strong> 的信号。通过 <strong>空分复用和空间分集</strong> 等技术，在不增加占用带宽的情况下，提高系统容量、覆盖范围和信噪比</p>
+<h3 id="80211acwifi5">
+<a class="header-anchor" href="#80211acwifi5"></a>
+802.11ac(wifi5)
+</h3><h3 id="80211axwifi6">
+<a class="header-anchor" href="#80211axwifi6"></a>
+802.11ax(wifi6)
+</h3><h4 id="wifi6的核心技术">
+<a class="header-anchor" href="#wifi6%e7%9a%84%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%af"></a>
+wifi6的核心技术
+</h4><p>Wi-Fi 6设计主要是为了适用于高密度无线接入和高容量无线业务，比如室外大型公共场所、高密场馆、室内高密无线办公、电子教室等场景以及未来4K/8K/VR等大带宽视频的承载。所以Wi-Fi 6继承了Wi-Fi 5的所有先进MIMO特性，并新增了许多针对高密部署场景的新特性。相比上一代Wi-Fi 5，Wi-Fi 6拥有“两高两低”四大优势</p>
+<p>（1）高带宽：同时支持2.4G和5G频段，而不是像Wi-Fi 5路由器的2.4G频段实际为Wi-Fi 4。另外采用1024-QAM高阶调制、最大支持160MHz频宽，速度快近3倍。
+（2）高并发：智能分频，多台设备并发连接，4倍容量提升。
+（3）低时延：支持多设备并发，大幅减少排队等待，时延降低2/3。
+（4）低功耗：引入目标唤醒时间（TWT）技术，终端设备按需唤醒功耗降低30%。
+下面来介绍一下其使用的几个关键技术</p>
+<p><a href="https://blog.csdn.net/weixin_46258766/article/details/131018071">https://blog.csdn.net/weixin_46258766/article/details/131018071</a></p>
+<h3 id="80211bewifi7">
+<a class="header-anchor" href="#80211bewifi7"></a>
+802.11be(wifi7)
+</h3><h4 id="wifi7的核心技术">
+<a class="header-anchor" href="#wifi7%e7%9a%84%e6%a0%b8%e5%bf%83%e6%8a%80%e6%9c%af"></a>
+wifi7的核心技术
+</h4><p>从Wi-Fi 7开始，Wi-Fi技术的发展方向和应用场景已逐渐从单AP转向多AP，并实现更高吞吐，更低时延的目标，下面简单介绍几项Wi-Fi 7主要技术特征</p>
+<p>（1）更大的信道带宽：Wi-Fi 7在Wi-Fi 6仅支持160MHz的基础上，将单个信道的最大波段频宽扩展到支持320MHz，以容纳更多的子载波数量，使吞吐量翻倍。
+（2）更多的空间流：相比于Wi-Fi 6最大支持8条空间流，Wi-Fi 7将最大支持16条空间流，最大吞吐量继续翻倍。
+（3）更高阶的调制方式：Wi-Fi 7的调制方式也从Wi-Fi 6的2048QAM升级到4096-QAM，单符号传输14bit，相比于Wi-Fi 6，吞吐量再提升16%。
+（4）支持Multi-RU：上一小节提到Wi-Fi 6中的OFDMA技术，可以为每个用户分配资源块（RU），来提升频谱效率。但这些RU的分配只能是连续的，也就是在同一时刻，每个用户只能够得到一个RU，这很不灵活。于是Wi-Fi 7中新增RU分配方案，将允许将多个连续和非连续的RU分配给单个用户，这样可以显著提高频谱效率和总体网络吞吐量。
+（5）多链路聚合：Wi-Fi 6协议虽然已经支持自动切换通信频段（比如路由器设置中的“多频合一”），但传输数据时还是在单个频段进行通信，并且实际使用“多频合一”时，有时还会因为过于频繁的自动切换频段而导致上网体验下降。于是Wi-Fi 7做出升级，支持用户同时并行使用多个频段，比如同时使用2.4GHz，5GHz，6GHz信道来传输数据。也就是说，Wi-Fi 7将支持不同的频带间进行链路层面上的聚合和协作，并降低流量切换时的开销，使同一时间片段上的队列数据可以同时在多条链路上并发传输，极大地提高网络吞吐量</p>
+<p>（6）多AP协同工作：之前的Wi-Fi协议都规定了多AP场景下的切换协议，但对AP之间的协作关系却没有过多定义。所以若用户处于两个AP中间的范围，则会由于AP的切换而导致“一瞬间的卡顿”，甚至会由于反复切换严重影响上网体验。针对这种问题，Wi-Fi 7标准则定义了多AP协同的机制，对于单用户可以同步支持多个AP节点的信号输入。也就是说，一部手机所接受的Wi-Fi信号可以同时由多个信号源（如路由器）提供，这样就可以实现Wi-Fi信号的动态稳定，从而消除这“一瞬间的卡顿”。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">Wifi标准</th>
+          <th style="text-align: center">标准名称</th>
+          <th style="text-align: center">发布年份</th>
+          <th style="text-align: center">理论最大速率</th>
+          <th style="text-align: center">频段</th>
+          <th style="text-align: center">关键技术</th>
+          <th style="text-align: center">编码方式</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">802.11</td>
+          <td style="text-align: center">1997</td>
+          <td style="text-align: center">2Mbps</td>
+          <td style="text-align: center">2.4GHz</td>
+          <td style="text-align: center">FHSS和DSSS</td>
+          <td style="text-align: center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">802.11b</td>
+          <td style="text-align: center">1999</td>
+          <td style="text-align: center">11Mbps</td>
+          <td style="text-align: center">2.4GHz</td>
+          <td style="text-align: center">DSSS</td>
+          <td style="text-align: center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">802.11a</td>
+          <td style="text-align: center">1999</td>
+          <td style="text-align: center">54Mbps</td>
+          <td style="text-align: center">5GHz</td>
+          <td style="text-align: center">OFDM</td>
+          <td style="text-align: center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">802.11g</td>
+          <td style="text-align: center">2003</td>
+          <td style="text-align: center">54Mbps</td>
+          <td style="text-align: center">2.4GHz</td>
+          <td style="text-align: center">OFDM</td>
+          <td style="text-align: center">64-QAM</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Wifi 4</td>
+          <td style="text-align: center">802.11n</td>
+          <td style="text-align: center">2009</td>
+          <td style="text-align: center">600Mbps</td>
+          <td style="text-align: center">2.4GHz&amp;5GHz</td>
+          <td style="text-align: center">MIMO，OFDM</td>
+          <td style="text-align: center">64-QAM</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Wifi 5</td>
+          <td style="text-align: center">802.11ac</td>
+          <td style="text-align: center">2013</td>
+          <td style="text-align: center">6.9Gbps</td>
+          <td style="text-align: center">5GHz</td>
+          <td style="text-align: center">下行MU-MIMO</td>
+          <td style="text-align: center">256-QAM</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Wifi 6</td>
+          <td style="text-align: center">802.11ax</td>
+          <td style="text-align: center">2019</td>
+          <td style="text-align: center">9.6Gbps</td>
+          <td style="text-align: center">2.4GHz&amp;5GHz</td>
+          <td style="text-align: center">OFDMA、TMT、上行MU-MIMO、下行MU-MIMO</td>
+          <td style="text-align: center">1024-QAM</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Wifi 7</td>
+          <td style="text-align: center">802.11be</td>
+          <td style="text-align: center">2024</td>
+          <td style="text-align: center">46Gbps</td>
+          <td style="text-align: center">2.4GHz、5GHz、6GHz</td>
+          <td style="text-align: center">Multi-Link Operation、CMU-MIMO、MU-MIMO</td>
+          <td style="text-align: center">4096-QAM</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="兼容性">
+<a class="header-anchor" href="#%e5%85%bc%e5%ae%b9%e6%80%a7"></a>
+兼容性
+</h2><p>802.11b和802.11g工作在同一频段上，g能够兼容b，也就是说支持g的网卡都能支持b。</p>
+<p>802.11n协议为双频工作模式（包含2.4GHz和5GHz两个工作频段）。这样11n保障了与以往的802.11a b, g标准兼容</p>
+<h2 id="wifi发展过程中的更新和改进">
+<a class="header-anchor" href="#wifi%e5%8f%91%e5%b1%95%e8%bf%87%e7%a8%8b%e4%b8%ad%e7%9a%84%e6%9b%b4%e6%96%b0%e5%92%8c%e6%94%b9%e8%bf%9b"></a>
+WiFi发展过程中的更新和改进
+</h2><h3 id="物理层技术">
+<a class="header-anchor" href="#%e7%89%a9%e7%90%86%e5%b1%82%e6%8a%80%e6%9c%af"></a>
+物理层技术
+</h3><p><img src="/image/%E6%A8%A1%E5%9D%97%E5%9B%BE/%E6%89%A9%E9%A2%91%E6%8A%80%E6%9C%AF.png" alt=""></p>
+<p>WiFi(无线局域网) 使用扩频技术来提高通信的可靠性和抗干扰能力，扩频技术在 WiFi 中的应用主要通过以下几种方式实现：</p>
+<p><strong>(a) 直接序列扩频 (Direct Sequence Spread Spectrum, DSSS)</strong></p>
+<p>DSSS 通过将数据与一个伪随机噪声码 (PN码)进行异或运算，将数据分散到一个更宽的频谱上。这样做的好处是使得信号在频谱中的能量密度降低，从而提高了信号对噪声和干扰的抵抗力。</p>
+<p><strong>(b) 跳频扩频 (Frequency Hopping Spread Spectrum, FHSS)</strong></p>
+<p>FHSS 通过快速在多个频率之间跳转来避免干扰,这需要提前在发送和接收端约定好跳频的规律，实际在WiFi中使用得比较少。</p>
+<p><strong>(c) 正交频分复用 (Orthogonal Frequency-Division Multiplexing, OFDM)</strong></p>
+<p>OFDM 使用多个正交子载波，每个子载波传输数据的一部分，这样就大大降低了多径效应的影响，并提高了频谱效率</p>
+<h3 id="主要更新和改进">
+<a class="header-anchor" href="#%e4%b8%bb%e8%a6%81%e6%9b%b4%e6%96%b0%e5%92%8c%e6%94%b9%e8%bf%9b"></a>
+主要更新和改进
+</h3><p>802.11b协议主要在PHY层进行了升级，直接抛弃了802.11中的FHSS物理层，只沿用了DSSS物理层。</p>
+<p><strong>802.11a</strong> 提供了比802.11b更高的传输速率54Mbps,它使用了<strong>OFDM（正交频分复用）<strong>技术，相比DSSS技术，能够提供更高的频谱效率和更好的信号质量，但是由于</strong>802.11a工作在5 GHz</strong>频段，这使得它与802.11b（工作在2.4 GHz频段）不兼容</p>
+<p>802.11g继承了802.11b的2.4GHz频段和802.11a的最高54Mbps最大传输速率。它使用了与802.11a相同的<strong>OFDM</strong>技术，能提供更高的传输速度。并且它<strong>向下兼容802.11b</strong>，使用了**CCK（Complimentary Code Keying）**技术来保证与802.11b设备的互操作性。</p>
+<p>WiFi4首次引入 MIMO 和 40 MHz 频宽，基础的高效无线网络标准</p>
+<p>WiFi5 只支持 5GHz 频段，它的显著改进是使用了<strong>MU-MIMO</strong>（多用户MIMO）技术，使得多个设备可以同时发送和接收数据，从而提高了网络的并发性能。相较于Wi-Fi 4，Wi-Fi 5的速度和效率大幅提升。</p>
+<p>WiFi6 与 WiFi5 相比，在<strong>大带宽、高并发、低延时、低功耗</strong>方面都有大幅度的提升。</p>
+<p><strong>大带宽</strong>：WiFi6 可以支持到 160MHz 频宽的信道绑定，使用 1024-QAM 的编码，最大支持 8 路空间流，使 WiFi6 的理论最大速率达到了 9.6Gbps</p>
+<p><strong>高并发</strong>：支持上下行 MU-MIMO 与上下行 OFDMA 两种多用户传输技术，减少多用户并行传输时的信道开销，提升多用户场景下的空间信道利用率，另外 WiFi6 每个 AP 支持 1024 个终端接入。</p>
+<p><strong>低延时</strong>：引入的 OFDMA 和 MU-MIMO 技术减少了设备之间的竞争时间，从而加快了数据传输速度。</p>
+<p><strong>低功耗</strong>：通过 TWT 和 Beamforming(波束成形) 技术，减少设备唤醒次数和优化信号传输来降低 STA 设备端的功耗</p>
+<p><strong>Wi-Fi 7</strong>，速度可高达每秒30Gbits ，是<strong>WiFi 6</strong>最高9.6Gbps速率的三倍之多。相比于Wi-Fi 6，WiFi 7将引入CMU-MIMO技术最多可支持16条数据流，其次 WiFi 7除了支持传统的2.4GHz和5GHz两个频段，还将新增支持6GHz频段，并且三个频段能同时工作。</p>
+<p>Wi-Fi6可同时使用2.4GHz 和5GHz 两个频段，而它的另一个升级版本，即 Wi-Fi 6E 则引入了新的6GHz 频段。Wi-Fi7将会继续使用这个新频段，</p>
+<h3 id="从mimo到mu-mimo">
+<a class="header-anchor" href="#%e4%bb%8emimo%e5%88%b0mu-mimo"></a>
+从MIMO到MU-MIMO
+</h3><p><img src="/image/%E6%A8%A1%E5%9D%97%E5%9B%BE/MIMO%E5%92%8CMU-MIMO%E7%9A%84%E5%AF%B9%E6%AF%94.png" alt=""></p>
+<p><strong>MIMO</strong>：一次只能为一个用户提供多路数据流，适合单个设备高速传输。</p>
+<p><strong>MU-MIMO</strong>：能够同时为多个用户提供多路数据流，更加高效地利用无线资源，适合多设备并发环境</p>
+<p>MU-MIMO和SU-MIMO的关键差异就在于MU-MIMO在同一时间能和多个终端通信，有效利用了空间资源，成倍提升了吞吐量。MIMO通常用<em>M</em>×<em>N</em>来表示<em>M</em>个发送天线和<em>N</em>个接收天线，而MU-MIMO实现了多用户通信，所以在MIMO基础上增加了MU（多用户）数量的指标项，一般用<em>M</em>×<em>N:U</em>表示。其中的<em>M</em>×<em>N</em>仍是指MIMO的天线数，<em>U</em>则表示MU数量，即同时通信的终端数量。例如一个MU-MIMO的规格为<em>8</em>×<em>8</em>:<em>8</em>，冒号后的<em>8</em>就表示同时通信的终端数量最大为8个。</p>
+<p>MIMO技术可简单理解为将空间资源进行分割，经过多根天线进行同步传送。在MIMO系统中，同一时间AP仅能和1个终端通信，所以也称为SU-MIMO（Single-User Multiple-Input Multiple-Output），即单用户MIMO。MIMO只是提升了 AP在同一时刻与1个终端通信的吞吐量问题，而且同一时刻AP也只能与1个终端通信。</p>
+<p>但是MIMO也有一个缺点就是当终端的天线数和AP的天线数相同时，可以充分使用AP的空间资源。但在实际应用中，通常AP和终端的收发天线数是不对等的，AP多是3根或者4根天线，甚至更多，但是终端（比如手机）通常只有1-2根天线，这会造成AP一部分空间资源的浪费。举例来说，1台4×4（4天线，4发4收）的WiFi 5 AP的理论传输速率可达1.732Gbps，当它与1×1（1天线）手机通信时，最高理论传输速率仅为1/4，即433Mbps，同一时间其余3根天线闲置，则1.3Gbps的容量都会被闲置。</p>
+<p>而MU-MIMO技术使AP同一时间和多个终端进行通信，这样就能充分利用AP的总容量。</p>
+<p><strong>MU-MIMO (Multi-User Multiple Input Multiple Output)</strong> 是 MIMO 的多用户版本，它允许路由器 (AP) 使用多个天线同时向多个设备 (用户) 传输数据。这种方式显著提高了网络的并发能力和频谱利用效率。</p>
+<ul>
+<li><strong>多个数据流</strong>：MU-MIMO 能够同时向多个设备发送不同的数据流，而不是像 SU-MIMO 那样一次只能向一个设备发送数据流。</li>
+<li><strong>分配天线资源</strong>：MU-MIMO 技术根据设备的需求和信道状态，动态地分配天线资源，使得多个设备可以同时利用无线带宽。</li>
+<li><strong>空间分集</strong>：利用空间分集技术，MU-MIMO 可以区分和识别空间中不同用户设备的信号，避免相互干扰</li>
+</ul>
+<p>WiFi5和WiFi6都用的MU-MIMO技术，WiFi5支持4用户的MU-MIMO，在WiFi6将用户数增加到了8个</p>
+<h3 id="从ofdm到ofdma">
+<a class="header-anchor" href="#%e4%bb%8eofdm%e5%88%b0ofdma"></a>
+从OFDM到OFDMA
+</h3></div>
+    <footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/markdown"
+        rel="tag"
+        >MARKDOWN</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/test"
+        rel="tag"
+        >TEST</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+            data-src="/image/2.JPG"
+            data-sizes="auto"
+            alt="ns-3 中 WifiNetDevice 的架构"
+            class="lazyload"
+          /><a
+          href="/post/ns-3-%E4%B8%AD-wifinetdevice-%E7%9A%84%E6%9E%B6%E6%9E%84/"
+          aria-label="前一篇:ns-3 中 WifiNetDevice 的架构"
+          title="前一篇:ns-3 中 WifiNetDevice 的架构"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">ns-3 中 WifiNetDevice 的架构</h3>
+      </div><div class="article-nav-link-wrap right"><img
+            data-src="/image/2.JPG"
+            data-sizes="auto"
+            alt="强化学习"
+            class="lazyload"
+          /><a
+          href="/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"
+          aria-label="后一篇:强化学习"
+          title="后一篇:强化学习"
+        ></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">强化学习</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      LYJ
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;17.4k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;00:40</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#wifi标准的演进">wifi标准的演进</a>
+      <ul>
+        <li><a href="#80211">802.11</a></li>
+        <li><a href="#80211b">802.11b</a></li>
+        <li><a href="#80211a">802.11a</a></li>
+        <li><a href="#80211g">802.11g</a></li>
+        <li><a href="#80211nwifi4">802.11n(wifi4)</a></li>
+        <li><a href="#80211acwifi5">802.11ac(wifi5)</a></li>
+        <li><a href="#80211axwifi6">802.11ax(wifi6)</a></li>
+        <li><a href="#80211bewifi7">802.11be(wifi7)</a></li>
+      </ul>
+    </li>
+    <li><a href="#兼容性">兼容性</a></li>
+    <li><a href="#wifi发展过程中的更新和改进">WiFi发展过程中的更新和改进</a>
+      <ul>
+        <li><a href="#物理层技术">物理层技术</a></li>
+        <li><a href="#主要更新和改进">主要更新和改进</a></li>
+        <li><a href="#从mimo到mu-mimo">从MIMO到MU-MIMO</a></li>
+        <li><a href="#从ofdm到ofdma">从OFDM到OFDMA</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/IMG_3574.JPG"
+    data-sizes="auto"
+    alt="LYJ"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">LYJ</div>
+  <div class="sidebar-description">摆烂的lyj...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">11</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      1
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:xxx@gmail.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/liangyjing/liangyjing.github.io"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-google sidebar-social-icon">
+      <a
+        href="https://plus.google.com/yourname"
+        itemprop="url"
+        target="_blank"
+        aria-label="google"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="articles"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">articles</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">分类</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="friend"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">friend</div>
+    </div></div>
+</div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><meting-js
+        theme="var(--color-link)"
+        id="2265921590"server="qq"type="song"auto="true"fixed="true">
+      </meting-js><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js"
+    integrity="sha384-vLev0II0HKFaxkcm&#43;/7kX5IGwVFBASkGchU311wmU/veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "LYJ",
+          title: "WiFi1-7的演进过程",
+          url: "https:\/\/example.org\/post\/wifi%E6%BC%94%E8%BF%9B\/",
+          description: "对The MAC modeld的理解",
+          cover: "https:\/\/example.org\/image\/1.JPG",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.js"
+    data-pjaxintegrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc&#43;T1b2N&#43;teh/OJfpU0jr6" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/contrib/auto-render.min.js"
+    data-pjaxintegrity="sha384-hCXGrW6PitJEwbkoStFjeJxv&#43;fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script><script data-pjax>
+          var renderMath = () => {
+            if (!window.renderMathInElement) return;
+            window.renderMathInElement(_$("article"), {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+              ],
+            });
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderMath, { once: true });
+          } else {
+            renderMath();
+          }
+        </script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script>
+      var meting_api = 'https:\/\/api.metatable.com';
+    </script><script>
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      const meting = _$('meting-js');
+      if (meting) {
+        meting.setAttribute('fixed', 'true');
+        const aside = meting.parentNode?.parentNode;
+        if (aside?.tagName === 'ASIDE') {
+          meting.parentNode.removeChild(meting);
+          document.body.appendChild(meting);
+        }
+      }
+    }
+  </script><script
+    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"></script></body>
+</html>

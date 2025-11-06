@@ -1,0 +1,722 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  The MAC model | LYJ
+</title>
+<meta
+  name="description"
+  content="对The MAC modeld的理解"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://example.org/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="The MAC model | LYJ" />
+  <meta
+    property="og:description"
+    content="对The MAC modeld的理解"
+  />
+  <meta property="og:url" content="https://example.org/post/the-mac-model/" />
+  <meta
+    property="og:site_name"
+    content="My  Hugo Blog"
+  />
+  <meta
+    property="og:image"
+    content="/image/1.JPG"
+  />
+  <meta property="article:author" content="LYJ" />
+  <meta property="article:published_time" content="2025-10-16T08:16:52&#43;08:00" />
+  <meta property="article:modified_time" content="2025-10-15T17:12:52&#43;08:00" /><meta property="article:tag" content="markdowntest" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/image/1.JPG" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.517faddf9413db2abd9c75a19951cf78794508d2844af8518badab01b1144063.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.css"
+    integrity="sha384-5TcZemv2l/9On385z///&#43;d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><img src="/avatar/IMG_3574.JPG" alt="loading" /></div><div class="loading-word">加油搬砖...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/">首页</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/archives">articles</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/about">分类</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/friend">friend</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav></div>
+<header id="header" aria-label="Site header">
+  <picture></picture>
+  <img class="header-media"
+       crossorigin="anonymous"
+       fetchpriority="high"
+       src="/image/1.JPG" 
+       alt="The MAC model">
+
+
+  <div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">The MAC model</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-mac-model">The MAC model</a>
+      <ul>
+        <li><a href="#infrastructure-association">Infrastructure association</a></li>
+        <li><a href="#roaming漫游">Roaming(漫游)</a></li>
+        <li><a href="#channel-access信道访问">Channel access(信道访问)</a></li>
+        <li><a href="#80211ax">802.11ax</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/IMG_3574.JPG"
+    data-sizes="auto"
+    alt="LYJ"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">LYJ</div>
+  <div class="sidebar-description">摆烂的lyj...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">11</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      1
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:xxx@gmail.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/liangyjing/liangyjing.github.io"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-google sidebar-social-icon">
+      <a
+        href="https://plus.google.com/yourname"
+        itemprop="url"
+        target="_blank"
+        aria-label="google"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="articles"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">articles</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">分类</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="friend"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">friend</div>
+    </div></div>
+</div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-10-16 08:16:52 &#43;0800 CST" itemprop="datePublished"
+      >2025-10-16</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-10-15</time
+    >
+  </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/test"
+      data-aos="zoom-in"
+      >TEST</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="the-mac-model">
+<a class="header-anchor" href="#the-mac-model"></a>
+The MAC model
+</h2><h3 id="infrastructure-association">
+<a class="header-anchor" href="#infrastructure-association"></a>
+Infrastructure association
+</h3><p>在基础设施模式下的关联操作是由关联管理器执行的一项高级 MAC 功能，该功能通过一个基类（WifiAssocManager）和一个默认子类（WifiDefaultAssocManager）来实现，并由 StaWifiMac 类的 AssocType 属性进行控制。该属性决定了非 AP 的 STA/MLD 是执行传统的关联操作还是与 AP 设备进行 ML 建立（后者仅适用于与多链路 AP 进行关联的 EHT 设备；如果在不符合此条件的情况下选择此选项，系统将自动回退到传统的关联操作）。站 MAC、关联管理器基类和子类之间的交互关系如图所示：扫描过程。</p>
+<p><img src="/image/%E6%A8%A1%E5%9D%97%E5%9B%BE/1.png" alt="image-20251016180333405"></p>
+<p>这个图的过程如下:</p>
+<p>首先STA启动扫描(StartScanning),根据扫描参数过滤掉那些不符合条件的接入点(ap)。当STA接收到来自AP的Beacon或Probe Response帧时，通过NotifyApInfo(apInfo)过程，STA会将这些信息传递给关联管理器(Assoc. Manager)，并将其按照某些排列规则(由子类定义)加入到AP列表中。如果扫描超时（ScanningTimeout），系统会从已排序的AP列表中提取出最佳AP(bestAp)。接下来，默认的关联管理器（Default Assoc. Manager）会决定是否立即结束扫描（EndScanning），如果已获取到 AP 信息，则立即安排对 EndScanning() 函数的调用；否则，在预设的主动/被动扫描时间结束后再进行调用。如果有多个链路可以建立，系统会选择合适的链路，并根据需要调整信道。最后，STA向选定的最佳AP发送关联请求（Send Association Request）以完成连接的建立。</p>
+<p><strong>StartScanning (scanParams)</strong>：STA 开始扫描时，会根据传入的参数（如扫描时间、扫描频道等）设置扫描条件。</p>
+<p><strong>STA 接收到 Beacon/Probe Response frame</strong>：此时，STA 接收到 AP (接入点) 发送的 beacon 或 probe 响应帧，其中包含了 AP 的信息。</p>
+<p><strong>NotifyApInfo (apInfo)</strong>：<code>NotifyApInfo(apInfo)</code> 是在连接过程中，STA（终端设备）接收到来自接入点（AP）的信息时，关联管理器（Assoc. Manager）用来更新AP列表的一个过程。具体来说：</p>
+<ul>
+<li><strong><code>apInfo</code></strong> 是包含接入点信息的对象，通常包括AP的信号强度、SSID、支持的速率、加密方式等参数。</li>
+<li>该函数会将接收到的AP信息添加到一个已排序的AP列表中。排序的依据由子类定义，通常是根据信号强度、网络负载、加密方式等因素来决定哪个AP最合适。</li>
+</ul>
+<p><strong>ScanningTimeout (bestAp)</strong>：在扫描过程中，如果扫描超时，关联管理器会从已排序的 AP 列表中选择最优的 AP 来进行关联。</p>
+<p><strong>DoStartScanning</strong>：默认关联管理器会调用这个函数来开始扫描，移除不符合扫描条件的 AP 信息。</p>
+<p><strong>EndScanning()</strong>：当扫描结束时，会调用这个函数。如果扫描到多个可用链接，管理器会尝试识别哪些链接可以设置，并在其他 STA 上切换信道（如果需要并且允许的话）。</p>
+<p><strong>Schedule call to EndScanning()</strong>：此函数会根据扫描的完成情况安排对 EndScanning() 的调用。</p>
+<p><strong>Send Association Request</strong>：当 STA 找到最佳 AP 后，会发送关联请求。此时，AP 信息已经包含了与 STA 之间的通信所需的信息，STA 可以准备好与 AP 建立连接。</p>
+<h3 id="roaming漫游">
+<a class="header-anchor" href="#roaming%e6%bc%ab%e6%b8%b8"></a>
+Roaming(漫游)
+</h3><p>目前不支持二层漫游（即 STA 从一个 AP 切换关联到另一个 AP）。因此，IEEE 802.11 标准 [ieee80211] 中描述的最小/最大信道驻留时间实现也被省略，因为它仅在信道漫游的上下文中才有意义。</p>
+<h3 id="channel-access信道访问">
+<a class="header-anchor" href="#channel-access%e4%bf%a1%e9%81%93%e8%ae%bf%e9%97%ae"></a>
+Channel access(信道访问)
+</h3><h4 id="帧聚合的方式">
+<a class="header-anchor" href="#%e5%b8%a7%e8%81%9a%e5%90%88%e7%9a%84%e6%96%b9%e5%bc%8f"></a>
+帧聚合的方式
+</h4><ol>
+<li>
+<p>MSDU(MAC Service Data Unit)，即MAC <strong>服务</strong> 数据单元，MSDU仅仅是数据帧的Payload部分，没有Header，可以把MSDU理解成Ethernet报文；</p>
+</li>
+<li>
+<p>MPDU(MAC Protocol Data Unit )，即MAC <strong>协议</strong> 数据单元，是Payload+MAC层的数据包头部，也可以大致理解为MDPU = MAC层头部 + MSDU。</p>
+<p>802.11n的MSDU聚合和MPDU聚合扩展，两者可以组合在一起（两级聚合)</p>
+</li>
+<li>
+<p>PPDU(Physical Layer Protocol Data Unit)，物理层协议数据单元，它包括物理层前导码信息、物理层帧头部和净荷信息三部分。</p>
+<p><img src="/image/%E6%A8%A1%E5%9D%97%E5%9B%BE/2.png" alt=""></p>
+<p>对图片的逐层解释：</p>
+<ol>
+<li>
+<p><strong>网络层（Layer 3）</strong></p>
+<ul>
+<li>数据从网络层（如 IP 包）向下传递到数据链路层。</li>
+<li>在无线网络中，这通常称为 <strong>L3–L7 数据</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>数据链路层（Data-Link Layer, Layer 2）</strong></p>
+<p>这一层分为两个子层：</p>
+<ul>
+<li><strong>LLC（Logical Link Control）</strong>
+<ul>
+<li>提供帧同步和错误控制。</li>
+<li>上层数据在这里形成 <strong>MSDU（MAC Service Data Unit）</strong>。</li>
+</ul>
+</li>
+<li><strong>MAC（Medium Access Control）</strong>
+<ul>
+<li><strong>MSDU</strong> 传到 MAC 子层后，被封装成 <strong>MPDU（MAC Protocol Data Unit）</strong>。</li>
+<li>MPDU = <strong>MAC Header + MSDU + MAC Trailer（如 FCS）</strong>。</li>
+<li>图中标注：<strong>MSDU is encapsulated in the MPDU</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>物理层（PHY Layer</strong>）</p>
+<p>在无线网络中，物理层也分为两个子层：</p>
+<ul>
+<li><strong>PLCP（Physical Layer Convergence Procedure）</strong>
+<ul>
+<li>负责将 MPDU 进一步封装成 <strong>PPDU（PLCP Protocol Data Unit）</strong>。</li>
+<li>图中标注：<strong>MPDU = PSDU</strong>，即 MPDU 作为 <strong>PSDU（PHY Service Data Unit）</strong> 传入物理层。</li>
+<li>PLCP 会加上 <strong>Preamble（前导码）</strong> 和 <strong>PHY Header</strong>。</li>
+</ul>
+</li>
+<li><strong>PMD（Physical Medium Dependent）</strong>
+<ul>
+<li>将 PPDU 转换成实际的 <strong>比特流（0101…）</strong>，通过无线电波发送出去。</li>
+<li>图中标注：<strong>Data is transmitted as bits</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="80211ax">
+<a class="header-anchor" href="#80211ax"></a>
+802.11ax
+</h3><p><img src="/image/%E6%A8%A1%E5%9D%97%E5%9B%BE/3.png" alt=""></p>
+<h4 id="80211ax中的mac层接入机制">
+<a class="header-anchor" href="#80211ax%e4%b8%ad%e7%9a%84mac%e5%b1%82%e6%8e%a5%e5%85%a5%e6%9c%ba%e5%88%b6"></a>
+<strong>802.11ax中的MAC层接入机制</strong>
+</h4><h4 id="ofdm和ofdma技术">
+<a class="header-anchor" href="#ofdm%e5%92%8cofdma%e6%8a%80%e6%9c%af"></a>
+OFDM和OFDMA技术
+</h4><p>802.11 ax 采用了 OFDMA 调制方式，OFDMA 是在 OFDM 的基础上改进而来，在 802.11 ax 协议提出之前已经在移动蜂窝网上得到了应用。802.11 ax 将 OFDMA 技术移植到了无线局域网并进行了简化。传统的 OFDM 技术在传输数据信号时，无论数据量多大都会在传输时间内独占整个信道，802.11ax 利用 OFDMA 技术将信道划分为若干个子载波，多个用户可以同时被分配一定数值的带宽接入信道传输数据。</p>
+<p>与802.11 ac使用的正交频分复用（OFDM，Orthogonal Frequency Division Multiplexing）技术不同，802.11ax采纳了移动蜂窝网络率先使用的正交频分多址 （OFDMA，Orthogonal Frequency Division Multiple Access）技术，多个终端同一时间并排传输数据，避免了竞争和等待，降低时延的同时也提高了传输效率。</p>
+<p>OFDMA 技术是在OFDM的基础上加入多址（即多用户）技术演进而来的。OFDMA技术将帧结构重新设计，细分成若干资源单元（RUs，Resource Units），为多个用户服务。 以20MHz信道为例，在OFDM方案里每一帧由52个数据子载波组成，但由于这一帧只为一个终端服务，当传输的数据包过小的时候，空载的子载波也无法分配给其他终端，而在OFDMA方案里每一帧由234个数据子载波组成，26个子载波被定义为 一个资源单元，每个资源单元可以为一个终端服务，这样每一帧就可以同时为9个用 户服务，从而提升传输效率。OFDM下连接点（AP）同一时间只能和一个终端交换 数据，即使是下载一张图片也要占用整个通信周期。802.11 ax的编码类型升级到 OFDMA后，适用于小数据包的并行传输，能够让连接点一个通信周期内跟多台设备同时通信，同时尽可能压缩每次通信周期的数据传输量，以提高传输效率和信道利用率，从而使网络更畅通。下图为两种技术的对比</p>
+<p><img src="/image/%E6%A8%A1%E5%9D%97%E5%9B%BE/4.png" alt=""></p>
+<h4 id="dl-ofdma-and-ul-ofdma">
+<a class="header-anchor" href="#dl-ofdma-and-ul-ofdma"></a>
+<strong>DL OFDMA</strong> and <strong>UL OFDMA</strong>
+</h4><h5 id="下行ofdma接入机制dl-ofdma">
+<a class="header-anchor" href="#%e4%b8%8b%e8%a1%8cofdma%e6%8e%a5%e5%85%a5%e6%9c%ba%e5%88%b6dl-ofdma"></a>
+下行OFDMA接入机制（DL-OFDMA）
+</h5><h5 id="上行ofdma接入机制ul-ofdma">
+<a class="header-anchor" href="#%e4%b8%8a%e8%a1%8cofdma%e6%8e%a5%e5%85%a5%e6%9c%ba%e5%88%b6ul-ofdma"></a>
+<strong>上行OFDMA接入机制（UL-OFDMA）</strong>
+</h5><h4 id="mu-mimo-技术">
+<a class="header-anchor" href="#mu-mimo-%e6%8a%80%e6%9c%af"></a>
+MU-MIMO 技术
+</h4><p>MU-MIMO 技术在采用 802.11 ac 标准的设备上便得到了应用，使系统吞吐量得到了提升。但如上表所示 802.11 ac 只实现了 MU-MIMO 的下行传输，不具备上行链路传输的功能，802.11 ac 的 MU-MIMO 最大规格为 4×4，能最多同时向 4 个终端发送 MU-MIMO 数据。802.11 ax 在 802.11 ac 基础上不仅将最大用户数扩大到了 8 个，而且支持上行链路和下行链路的传输。也就是说当连接点向多个终端分享数据包时，终端也可以同时向连接点发送数据，这种全双工的传输方式减少了竞争，提高了传输效率。</p>
+<p><strong>DIFS</strong>（Distributed Interframe Space）和 <strong>EIFS</strong>（Extended Interframe Space）是IEEE 802.11标准中定义的两种时间间隔，它们用于控制无线网络中设备之间的通信时序，帮助协调设备的传输行为。它们主要用于确定设备何时可以开始传输数据，以及在信道发生忙碌事件或错误时如何重新进行传输。</p>
+</div>
+    <footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/markdown"
+        rel="tag"
+        >MARKDOWN</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/test"
+        rel="tag"
+        >TEST</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+            data-src="/image/4.JPG"
+            data-sizes="auto"
+            alt="wifi模块代码"
+            class="lazyload"
+          /><a
+          href="/post/wifi%E6%A8%A1%E5%9D%97%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90/"
+          aria-label="前一篇:wifi模块代码"
+          title="前一篇:wifi模块代码"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">wifi模块代码</h3>
+      </div><div class="article-nav-link-wrap right"><img
+            data-src="/image/3.JPG"
+            data-sizes="auto"
+            alt="802.11标准"
+            class="lazyload"
+          /><a
+          href="/post/802.11%E5%8D%8F%E8%AE%AE/"
+          aria-label="后一篇:802.11标准"
+          title="后一篇:802.11标准"
+        ></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">802.11标准</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      LYJ
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;17.4k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;00:40</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-mac-model">The MAC model</a>
+      <ul>
+        <li><a href="#infrastructure-association">Infrastructure association</a></li>
+        <li><a href="#roaming漫游">Roaming(漫游)</a></li>
+        <li><a href="#channel-access信道访问">Channel access(信道访问)</a></li>
+        <li><a href="#80211ax">802.11ax</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/IMG_3574.JPG"
+    data-sizes="auto"
+    alt="LYJ"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">LYJ</div>
+  <div class="sidebar-description">摆烂的lyj...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">11</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      1
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:xxx@gmail.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/liangyjing/liangyjing.github.io"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-google sidebar-social-icon">
+      <a
+        href="https://plus.google.com/yourname"
+        itemprop="url"
+        target="_blank"
+        aria-label="google"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="articles"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">articles</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">分类</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="friend"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">friend</div>
+    </div></div>
+</div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><meting-js
+        theme="var(--color-link)"
+        id="2265921590"server="qq"type="song"auto="true"fixed="true">
+      </meting-js><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js"
+    integrity="sha384-vLev0II0HKFaxkcm&#43;/7kX5IGwVFBASkGchU311wmU/veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "LYJ",
+          title: "The MAC model",
+          url: "https:\/\/example.org\/post\/the-mac-model\/",
+          description: "对The MAC modeld的理解",
+          cover: "https:\/\/example.org\/image\/1.JPG",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.js"
+    data-pjaxintegrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc&#43;T1b2N&#43;teh/OJfpU0jr6" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/contrib/auto-render.min.js"
+    data-pjaxintegrity="sha384-hCXGrW6PitJEwbkoStFjeJxv&#43;fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script><script data-pjax>
+          var renderMath = () => {
+            if (!window.renderMathInElement) return;
+            window.renderMathInElement(_$("article"), {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+              ],
+            });
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderMath, { once: true });
+          } else {
+            renderMath();
+          }
+        </script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script>
+      var meting_api = 'https:\/\/api.metatable.com';
+    </script><script>
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      const meting = _$('meting-js');
+      if (meting) {
+        meting.setAttribute('fixed', 'true');
+        const aside = meting.parentNode?.parentNode;
+        if (aside?.tagName === 'ASIDE') {
+          meting.parentNode.removeChild(meting);
+          document.body.appendChild(meting);
+        }
+      }
+    }
+  </script><script
+    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"></script></body>
+</html>

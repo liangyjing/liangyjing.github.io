@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Test on My  Hugo Blog</title>
+    <link>https://example.org/tags/test/</link>
+    <description>Recent content from My  Hugo Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>xxx@example.com (LYJ)</managingEditor>
+    <webMaster>xxx@example.com (LYJ)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Tue, 04 Nov 2025 10:12:52 +0800</lastBuildDate>
+    
+    
+    <atom:link href="https://example.org/tags/test/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>NS3</title>
+      <link>https://example.org/post/ns3/</link>
+      <pubDate>Tue, 04 Nov 2025 08:12:52 &#43;0800</pubDate>
+      <author>xxx@example.com (LYJ)</author>
+      <guid>https://example.org/post/ns3/</guid>
+      <description>
+        <![CDATA[<h1>NS3</h1><p>作者：LYJ（xxx@example.com）</p>
+        
+          <h2 id="ns-3概述">
+<a class="header-anchor" href="#ns-3%e6%a6%82%e8%bf%b0"></a>
+NS-3概述
+</h2><p>NS-3（Network Simulator 3）是一个用于仿真网络的开源软件工具，主要用于研究和教学。NS-3的设计目标是提供一个灵活、可扩展的平台，以支持各种网络协议和应用的仿真。与早期的网络仿真工具（如NS-2）相比，NS-3在设计上更加现代化，使用C++和Python编写，支持多线程和并行仿真，具有更高的性能和更丰富的功能。</p>
+        
+        <hr><p>本文2025-11-04首发于<a href='https://example.org/'>My  Hugo Blog</a>，最后修改于2025-11-04</p>]]>
+      </description>
+      
+        <category>test</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>强化学习</title>
+      <link>https://example.org/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 24 Oct 2025 10:12:52 &#43;0800</pubDate>
+      <author>xxx@example.com (LYJ)</author>
+      <guid>https://example.org/post/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</guid>
+      <description>
+        <![CDATA[<h1>强化学习</h1><p>作者：LYJ（xxx@example.com）</p>
+        
+          <h2 id="强化学习算法">
+<a class="header-anchor" href="#%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%ae%97%e6%b3%95"></a>
+强化学习算法
+</h2><h3 id="q学习q-learning">
+<a class="header-anchor" href="#q%e5%ad%a6%e4%b9%a0q-learning"></a>
+Q学习(Q-Learning)
+</h3><p>Q学习是一种强化学习算法，用于解决智能体(agent)在与环境互动的过程中学习如何做出决策以获得最大的累计奖励。它属于无模型(model-free)强化学习方法的一种，这意味着Q学习不需要事先了解环境的具体模型，只需要通过与环境的交互来学习。</p>
+        
+        <hr><p>本文2025-10-24首发于<a href='https://example.org/'>My  Hugo Blog</a>，最后修改于2025-10-24</p>]]>
+      </description>
+      
+        <category>test</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>WiFi1-7的演进过程</title>
+      <link>https://example.org/post/wifi%E6%BC%94%E8%BF%9B/</link>
+      <pubDate>Sat, 18 Oct 2025 08:16:52 &#43;0800</pubDate>
+      <author>xxx@example.com (LYJ)</author>
+      <guid>https://example.org/post/wifi%E6%BC%94%E8%BF%9B/</guid>
+      <description>
+        <![CDATA[<h1>WiFi1-7的演进过程</h1><p>作者：LYJ（xxx@example.com）</p>
+        
+          <h2 id="wifi标准的演进">
+<a class="header-anchor" href="#wifi%e6%a0%87%e5%87%86%e7%9a%84%e6%bc%94%e8%bf%9b"></a>
+wifi标准的演进
+</h2><h3 id="80211">
+<a class="header-anchor" href="#80211"></a>
+802.11
+</h3><ul>
+<li><strong>发布年份</strong>：1997年</li>
+<li><strong>频段</strong>：2.4 GHz</li>
+<li><strong>最大速率</strong>：2 Mbps</li>
+<li><strong>调制技术</strong>：使用了红外线和无线电频率（RF）作为传输介质，主要采用直接序列扩频（DSSS）和跳频扩频（FHSS）技术。</li>
+</ul>
+<h3 id="80211b">
+<a class="header-anchor" href="#80211b"></a>
+802.11b
+</h3><h4 id="80211b特性">
+<a class="header-anchor" href="#80211b%e7%89%b9%e6%80%a7"></a>
+802.11b特性
+</h4><ul>
+<li>
+<p><strong>频段</strong>：2.4 GHz</p>
+        
+        <hr><p>本文2025-10-18首发于<a href='https://example.org/'>My  Hugo Blog</a>，最后修改于2025-10-18</p>]]>
+      </description>
+      
+        <category>test</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>ns-3 中 WifiNetDevice 的架构</title>
+      <link>https://example.org/post/ns-3-%E4%B8%AD-wifinetdevice-%E7%9A%84%E6%9E%B6%E6%9E%84/</link>
+      <pubDate>Fri, 17 Oct 2025 18:12:52 &#43;0800</pubDate>
+      <author>xxx@example.com (LYJ)</author>
+      <guid>https://example.org/post/ns-3-%E4%B8%AD-wifinetdevice-%E7%9A%84%E6%9E%B6%E6%9E%84/</guid>
+      <description>
+        <![CDATA[<h1>ns-3 中 WifiNetDevice 的架构</h1><p>作者：LYJ（xxx@example.com）</p>
+        
+          <p>WifiNetDevice架构</p>
+<p><img src="/image/%E6%A8%A1%E5%9D%97%E5%9B%BE/6.png" alt=""></p>
+<p>这张图展示了一个Wi-Fi设备从<strong>上层应用接收数据包</strong>到<strong>通过天线发送出去</strong>，以及反向<strong>从天线接收信号</strong>到<strong>向上层递交数据包</strong>的完整过程。它遵循标准的 <strong>OSI模型</strong>，清晰地分离了 <strong>MAC层</strong> 和 <strong>PHY层</strong> 的功能。</p>
+        
+        <hr><p>本文2025-10-17首发于<a href='https://example.org/'>My  Hugo Blog</a>，最后修改于2025-10-17</p>]]>
+      </description>
+      
+        <category>test</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>The MAC model</title>
+      <link>https://example.org/post/the-mac-model/</link>
+      <pubDate>Thu, 16 Oct 2025 08:16:52 &#43;0800</pubDate>
+      <author>xxx@example.com (LYJ)</author>
+      <guid>https://example.org/post/the-mac-model/</guid>
+      <description>
+        <![CDATA[<h1>The MAC model</h1><p>作者：LYJ（xxx@example.com）</p>
+        
+          <h2 id="the-mac-model">
+<a class="header-anchor" href="#the-mac-model"></a>
+The MAC model
+</h2><h3 id="infrastructure-association">
+<a class="header-anchor" href="#infrastructure-association"></a>
+Infrastructure association
+</h3><p>在基础设施模式下的关联操作是由关联管理器执行的一项高级 MAC 功能，该功能通过一个基类（WifiAssocManager）和一个默认子类（WifiDefaultAssocManager）来实现，并由 StaWifiMac 类的 AssocType 属性进行控制。该属性决定了非 AP 的 STA/MLD 是执行传统的关联操作还是与 AP 设备进行 ML 建立（后者仅适用于与多链路 AP 进行关联的 EHT 设备；如果在不符合此条件的情况下选择此选项，系统将自动回退到传统的关联操作）。站 MAC、关联管理器基类和子类之间的交互关系如图所示：扫描过程。</p>
+        
+        <hr><p>本文2025-10-16首发于<a href='https://example.org/'>My  Hugo Blog</a>，最后修改于2025-10-15</p>]]>
+      </description>
+      
+        <category>test</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>wireshark抓包</title>
+      <link>https://example.org/post/wireshark%E6%8A%93%E5%8C%85/</link>
+      <pubDate>Mon, 09 Jun 2025 20:12:52 &#43;0800</pubDate>
+      <author>xxx@example.com (LYJ)</author>
+      <guid>https://example.org/post/wireshark%E6%8A%93%E5%8C%85/</guid>
+      <description>
+        <![CDATA[<h1>wireshark抓包</h1><p>作者：LYJ（xxx@example.com）</p>
+        
+          <h1 id="hugo界面图片更换">
+<a class="header-anchor" href="#hugo%e7%95%8c%e9%9d%a2%e5%9b%be%e7%89%87%e6%9b%b4%e6%8d%a2"></a>
+hugo界面图片更换
+</h1><p>这个图片的更换路径为E:\Users\86138\Desktop\15\data\covers.yml</p>
+        
+        <hr><p>本文2025-06-09首发于<a href='https://example.org/'>My  Hugo Blog</a>，最后修改于2025-06-09</p>]]>
+      </description>
+      
+        <category>test</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>hugo界面图片更换</title>
+      <link>https://example.org/post/hugo%E7%95%8C%E9%9D%A2%E5%9B%BE%E7%89%87%E6%9B%B4%E6%8D%A2/</link>
+      <pubDate>Mon, 09 Jun 2025 20:12:52 &#43;0800</pubDate>
+      <author>xxx@example.com (LYJ)</author>
+      <guid>https://example.org/post/hugo%E7%95%8C%E9%9D%A2%E5%9B%BE%E7%89%87%E6%9B%B4%E6%8D%A2/</guid>
+      <description>
+        <![CDATA[<h1>hugo界面图片更换</h1><p>作者：LYJ（xxx@example.com）</p>
+        
+          <h1 id="hugo界面图片更换">
+<a class="header-anchor" href="#hugo%e7%95%8c%e9%9d%a2%e5%9b%be%e7%89%87%e6%9b%b4%e6%8d%a2"></a>
+hugo界面图片更换
+</h1><p>这个图片的更换路径为E:\Users\86138\Desktop\15\data\covers.yml</p>
+        
+        <hr><p>本文2025-06-09首发于<a href='https://example.org/'>My  Hugo Blog</a>，最后修改于2025-06-09</p>]]>
+      </description>
+      
+        <category>test</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Markdown Basic Elements</title>
+      <link>https://example.org/post/main/</link>
+      <pubDate>Thu, 09 Jun 2022 20:12:52 &#43;0800</pubDate>
+      <author>xxx@example.com (LYJ)</author>
+      <guid>https://example.org/post/main/</guid>
+      <description>
+        <![CDATA[<h1>Markdown Basic Elements</h1><p>作者：LYJ（xxx@example.com）</p>
+        
+          <h2 id="markdown-基本元素">
+<a class="header-anchor" href="#markdown-%e5%9f%ba%e6%9c%ac%e5%85%83%e7%b4%a0"></a>
+Markdown 基本元素
+</h2><h3 id="标题">
+<a class="header-anchor" href="#%e6%a0%87%e9%a2%98"></a>
+标题
+</h3><h1 id="h1">
+<a class="header-anchor" href="#h1"></a>
+H1
+</h1><h2 id="h2">
+<a class="header-anchor" href="#h2"></a>
+H2
+</h2><h3 id="h3">
+<a class="header-anchor" href="#h3"></a>
+H3
+</h3><h4 id="h4">
+<a class="header-anchor" href="#h4"></a>
+H4
+</h4><h5 id="h5">
+<a class="header-anchor" href="#h5"></a>
+H5
+</h5><h6 id="h6">
+<a class="header-anchor" href="#h6"></a>
+H6
+</h6><h3 id="强调">
+<a class="header-anchor" href="#%e5%bc%ba%e8%b0%83"></a>
+强调
+</h3><p>Emphasis, aka italics, with <em>asterisks</em> or <em>underscores</em>.</p>
+<p>Strong emphasis, aka bold, with <strong>asterisks</strong> or <strong>underscores</strong>.</p>
+<p>Combined emphasis with <strong>asterisks and <em>underscores</em></strong>.</p>
+<p>Strikethrough uses two tildes. <del>Scratch this.</del></p>
+<h3 id="列表">
+<a class="header-anchor" href="#%e5%88%97%e8%a1%a8"></a>
+列表
+</h3><h4 id="definition-list-dl">
+<a class="header-anchor" href="#definition-list-dl"></a>
+Definition List (dl)
+</h4><!-- raw HTML omitted -->
+<h4 id="ordered-list-ol">
+<a class="header-anchor" href="#ordered-list-ol"></a>
+Ordered List (ol)
+</h4><ol>
+<li>List Item 1</li>
+<li>List Item 2</li>
+<li>List Item 3</li>
+</ol>
+<h4 id="unordered-list-ul">
+<a class="header-anchor" href="#unordered-list-ul"></a>
+Unordered List (ul)
+</h4><ul>
+<li>List Item 1</li>
+<li>List Item 2</li>
+<li>List Item 3</li>
+</ul>
+<h3 id="段落">
+<a class="header-anchor" href="#%e6%ae%b5%e8%90%bd"></a>
+段落
+</h3><p>Lorem ipsum dolor sit amet, <a href="">test link</a> consectetur adipiscing elit. <strong>Strong text</strong> pellentesque ligula commodo viverra vehicula. <em>Italic text</em> at ullamcorper enim. Morbi a euismod nibh. <!-- raw HTML omitted -->Underline text<!-- raw HTML omitted --> non elit nisl. <del>Deleted text</del> tristique, sem id condimentum tempus, metus lectus venenatis mauris, sit amet semper lorem felis a eros. Fusce egestas nibh at sagittis auctor. Sed ultricies ac arcu quis molestie. Donec dapibus nunc in nibh egestas, vitae volutpat sem iaculis. Curabitur sem tellus, elementum nec quam id, fermentum laoreet mi. Ut mollis ullamcorper turpis, vitae facilisis velit ultricies sit amet. Etiam laoreet dui odio, id tempus justo tincidunt id. Phasellus scelerisque nunc sed nunc ultricies accumsan.</p>
+        
+        <hr><p>本文2022-06-09首发于<a href='https://example.org/'>My  Hugo Blog</a>，最后修改于2022-06-09</p>]]>
+      </description>
+      
+        <category>test</category>
+      
+    </item>
+    
+  </channel>
+</rss>

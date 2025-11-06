@@ -1,0 +1,702 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  ns-3 中 WifiNetDevice 的架构 | LYJ
+</title>
+<meta
+  name="description"
+  content="ns-3 中 WifiNetDevice 的架构"
+/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://example.org/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" />
+<meta property="og:type" content="website" />
+  <meta property="og:title" content="ns-3 中 WifiNetDevice 的架构 | LYJ" />
+  <meta
+    property="og:description"
+    content="ns-3 中 WifiNetDevice 的架构"
+  />
+  <meta property="og:url" content="https://example.org/post/ns-3-%E4%B8%AD-wifinetdevice-%E7%9A%84%E6%9E%B6%E6%9E%84/" />
+  <meta
+    property="og:site_name"
+    content="My  Hugo Blog"
+  />
+  <meta
+    property="og:image"
+    content="/image/2.JPG"
+  />
+  <meta property="article:author" content="LYJ" />
+  <meta property="article:published_time" content="2025-10-17T18:12:52&#43;08:00" />
+  <meta property="article:modified_time" content="2025-10-17T20:12:52&#43;08:00" /><meta property="article:tag" content="markdowntest" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="/image/2.JPG" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.517faddf9413db2abd9c75a19951cf78794508d2844af8518badab01b1144063.css" />
+<link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.css"
+    integrity="sha384-5TcZemv2l/9On385z///&#43;d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous"onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><img src="/avatar/IMG_3574.JPG" alt="loading" /></div><div class="loading-word">加油搬砖...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/">首页</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/archives">articles</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/about">分类</a>
+      </span><span class="main-nav-link-wrap">
+        <div class='main-nav-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+        <a class="main-nav-link" href="/friend">friend</a>
+      </span><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav></div>
+<header id="header" aria-label="Site header">
+  <picture></picture>
+  <img class="header-media"
+       crossorigin="anonymous"
+       fetchpriority="high"
+       src="/image/2.JPG" 
+       alt="ns-3 中 WifiNetDevice 的架构">
+
+
+  <div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">ns-3 中 WifiNetDevice 的架构</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#组件详细说明">组件详细说明</a></li>
+        <li><a href="#数据流总结">数据流总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/IMG_3574.JPG"
+    data-sizes="auto"
+    alt="LYJ"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">LYJ</div>
+  <div class="sidebar-description">摆烂的lyj...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">11</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      1
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:xxx@gmail.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/liangyjing/liangyjing.github.io"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-google sidebar-social-icon">
+      <a
+        href="https://plus.google.com/yourname"
+        itemprop="url"
+        target="_blank"
+        aria-label="google"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="articles"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">articles</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">分类</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="friend"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">friend</div>
+    </div></div>
+</div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2025-10-17 18:12:52 &#43;0800 CST" itemprop="datePublished"
+      >2025-10-17</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2025-10-17</time
+    >
+  </span></div>
+<div class="article-category"><a
+      class="article-category-link"
+      href="/categories/test"
+      data-aos="zoom-in"
+      >TEST</a
+    ></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><p>WifiNetDevice架构</p>
+<p><img src="/image/%E6%A8%A1%E5%9D%97%E5%9B%BE/6.png" alt=""></p>
+<p>这张图展示了一个Wi-Fi设备从<strong>上层应用接收数据包</strong>到<strong>通过天线发送出去</strong>，以及反向<strong>从天线接收信号</strong>到<strong>向上层递交数据包</strong>的完整过程。它遵循标准的 <strong>OSI模型</strong>，清晰地分离了 <strong>MAC层</strong> 和 <strong>PHY层</strong> 的功能。</p>
+<p>架构可以分为三个主要部分：</p>
+<ol>
+<li><strong>与上层的接口</strong>（最上方）</li>
+<li><strong>MAC层组件</strong>（中间部分）</li>
+<li><strong>PHY层组件</strong>（下方部分）</li>
+</ol>
+<h3 id="组件详细说明">
+<a class="header-anchor" href="#%e7%bb%84%e4%bb%b6%e8%af%a6%e7%bb%86%e8%af%b4%e6%98%8e"></a>
+组件详细说明
+</h3><h4 id="1-与上层的接口">
+<a class="header-anchor" href="#1-%e4%b8%8e%e4%b8%8a%e5%b1%82%e7%9a%84%e6%8e%a5%e5%8f%a3"></a>
+1. 与上层的接口
+</h4><ul>
+<li><strong><code>Send(packet, dest, proto)</code> / <code>ForwardUp</code></strong>:
+<ul>
+<li>这是Wi-Fi设备与网络栈上层（如网络层）的接口。</li>
+<li><strong><code>Send</code></strong>: 当上层（如IP层）有一个数据包要发送时，它会调用这个函数将数据包传递给Wi-Fi设备。</li>
+<li><strong><code>ForwardUp</code></strong>: 当Wi-Fi设备成功接收到一个目标是本机的数据包时，它会通过这个函数将数据包向上传递给网络层。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-mac层组件">
+<a class="header-anchor" href="#2-mac%e5%b1%82%e7%bb%84%e4%bb%b6"></a>
+2. MAC层组件
+</h4><p>MAC层负责信道访问控制、组帧、校验等。</p>
+<ul>
+<li><strong><code>WifiMac</code> (及其子类 <code>TagMAC</code>, <code>ApWifiMac</code>, <code>StaWifiMac</code>等)</strong>:
+<ul>
+<li>这是MAC层的核心，有不同的实现类来模拟不同的网络角色（如站点STA、接入点AP、自组网节点Adhoc）。</li>
+<li><strong>功能</strong>：负责处理关联、认证、信标帧发送、探测等MAC层管理功能。数据包的 <strong>MAC头</strong> 就是在这里添加的。</li>
+</ul>
+</li>
+<li><strong><code>Txop</code> (Transmission Opportunity)</strong>:
+<ul>
+<li><strong>功能</strong>：处理数据包队列，并存储 <strong>DCF/EDCA</strong> 信道访问参数。在支持 QoS 的设备中，每个接入类别（AC：Voice, Video, Best-Effort, Background）都有一个独立的 <code>Txop</code> 实例。</li>
+<li><strong><code>Enqueue</code></strong>: 从 <code>WifiMac</code> 接收数据包并将其放入相应的队列中等待发送。</li>
+</ul>
+</li>
+<li><strong><code>ChannelAccessManager</code></strong>:
+<ul>
+<li><strong>功能</strong>：<strong>决定何时可以授予信道访问权</strong>。它实现了 CSMA/CA 协议的核心逻辑，监听信道状态（空闲、繁忙），管理退避计时器，当条件满足时，它授权 <code>Txop</code> 进行传输。</li>
+</ul>
+</li>
+<li><strong><code>FrameExchangeManager</code></strong>:
+<ul>
+<li><strong>功能</strong>：一个类层次结构，负责处理<strong>特定协议标准（如802.11n, 802.11ac）的帧交换序列</strong>。例如，它管理一次完整的数据传输，包括 RTS/CTS、数据帧、ACK/BlockAck 的整个握手过程。</li>
+</ul>
+</li>
+<li><strong><code>BlockAckManager</code></strong>:
+<ul>
+<li><strong>功能</strong>：<strong>管理 BlockAck 协议</strong>。当使用块确认（一种提高效率的机制，允许一次确认多个数据帧）时，这个管理器负责维护BlockAck协议、缓存已发送但尚未被确认的数据包，并根据接收到的BlockAck帧进行确认。</li>
+</ul>
+</li>
+<li><strong><code>MacRxMiddle</code></strong>:
+<ul>
+<li><strong>功能</strong>：<strong>处理数据包分片的重组</strong>。当发送端将一个大的数据包分成多个小的MAC帧发送时，接收端的 <code>MacRxMiddle</code> 负责将这些分片收集起来，并重组为原始的数据包。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-phy层组件">
+<a class="header-anchor" href="#3-phy%e5%b1%82%e7%bb%84%e4%bb%b6"></a>
+3. PHY层组件
+</h4><p>PHY层负责信号的调制、编码和发送/接收。</p>
+<ul>
+<li><strong><code>WifiPhy</code></strong>:
+<ul>
+<li>这是物理层的核心抽象。</li>
+<li><strong>功能</strong>：负责将MAC层的帧<strong>转换</strong>为真正的无线电信号，以及将接收到的无线电信号<strong>转换</strong>回MAC帧。</li>
+<li><strong><code>StartTx</code></strong>: 当被MAC层触发时，它开始一个发送过程。</li>
+<li><strong><code>StartReceivePreamble</code></strong>: 当从信道检测到信号时，它开始一个接收过程（首先尝试解码前导码）。</li>
+</ul>
+</li>
+<li><strong><code>PhyEntity</code></strong>:
+<ul>
+<li><strong>功能</strong>：处理<strong>特定协议修订版（Amendment-specific）的PHY层细节</strong>。例如，不同的类负责实现 802.11a/g, 802.11n, 802.11ac 等不同标准特有的调制、编码和信号处理方式。这使得 <code>WifiPhy</code> 能够支持多种标准。</li>
+</ul>
+</li>
+<li><strong><code>Listener</code></strong>:
+<ul>
+<li>这是一个内部接口或回调机制，用于<strong>通知MAC层关于PHY层状态的变化</strong>，例如信道从繁忙变为空闲，这对于 <code>ChannelAccessManager</code> 至关重要。</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-信道与传播模型">
+<a class="header-anchor" href="#4-%e4%bf%a1%e9%81%93%e4%b8%8e%e4%bc%a0%e6%92%ad%e6%a8%a1%e5%9e%8b"></a>
+4. 信道与传播模型
+</h4><ul>
+<li><strong><code>Channel</code> (Spectrum or Yans)</strong>:
+<ul>
+<li>这是模拟的<strong>无线媒介本身</strong>。</li>
+<li><strong>功能</strong>：负责将信号<strong>传递到所有连接到这个信道的其他 <code>WifiPhy</code> 对象</strong>。在传递过程中，它会咨询<strong>传播损耗模型</strong>（如自由空间损耗、阴影衰落）和<strong>传播延迟模型</strong>，以模拟真实的无线环境效果。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="数据流总结">
+<a class="header-anchor" href="#%e6%95%b0%e6%8d%ae%e6%b5%81%e6%80%bb%e7%bb%93"></a>
+数据流总结
+</h3><p><strong>发送路径：</strong>
+<code>Send()</code> -&gt; <code>WifiMac</code> (添加MAC头) -&gt; <code>Txop</code> (入队) -&gt; <code>ChannelAccessManager</code> (竞争信道) -&gt; <code>FrameExchangeManager</code> (组织帧交换) -&gt; <code>WifiPhy</code> (转换为信号) -&gt; <code>StartTx</code> -&gt; <code>Channel</code> (发射到空间)</p>
+<p><strong>接收路径：</strong>
+<code>Channel</code> (从空间接收信号) -&gt; <code>WifiPhy</code> (<code>StartReceivePreamble</code>, 转换为数字帧) -&gt; <code>FrameExchangeManager</code> (处理帧交换) -&gt; <code>MacRxMiddle</code> (重组分片) -&gt; <code>WifiMac</code> (处理MAC逻辑) -&gt; <code>ForwardUp()</code> (递交给上层)</p>
+</div>
+    <footer class="article-footer"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/markdown"
+        rel="tag"
+        >MARKDOWN</a
+      >
+    </li><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/test"
+        rel="tag"
+        >TEST</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+            data-src="/image/3.JPG"
+            data-sizes="auto"
+            alt="802.11标准"
+            class="lazyload"
+          /><a
+          href="/post/802.11%E5%8D%8F%E8%AE%AE/"
+          aria-label="前一篇:802.11标准"
+          title="前一篇:802.11标准"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">802.11标准</h3>
+      </div><div class="article-nav-link-wrap right"><img
+            data-src="/image/1.JPG"
+            data-sizes="auto"
+            alt="WiFi1-7的演进过程"
+            class="lazyload"
+          /><a
+          href="/post/wifi%E6%BC%94%E8%BF%9B/"
+          aria-label="后一篇:WiFi1-7的演进过程"
+          title="后一篇:WiFi1-7的演进过程"
+        ></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">WiFi1-7的演进过程</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2025<span class="footer-info-sep rotate"></span>
+      LYJ
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp; Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;17.4k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;00:40</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#组件详细说明">组件详细说明</a></li>
+        <li><a href="#数据流总结">数据流总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/IMG_3574.JPG"
+    data-sizes="auto"
+    alt="LYJ"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">LYJ</div>
+  <div class="sidebar-description">摆烂的lyj...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">11</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      1
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </a>
+</div>
+<div class="sidebar-social"><div class="icon-email sidebar-social-icon">
+      <a
+        href="mailto:xxx@gmail.com"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-github sidebar-social-icon">
+      <a
+        href="https://github.com/liangyjing/liangyjing.github.io"
+        itemprop="url"
+        target="_blank"
+        aria-label="github"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div><div class="icon-google sidebar-social-icon">
+      <a
+        href="https://plus.google.com/yourname"
+        itemprop="url"
+        target="_blank"
+        aria-label="google"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div>
+<div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/1.png" alt="home icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="articles"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/2.png" alt="archives icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">articles</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="分类"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/3.png" alt="about icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">分类</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="friend"
+      ></a>
+      <div class='sidebar-menu-icon icon '><img src="/avatar/4.png" alt="friend icon" class="" style="height: 1em;"></div>
+      <div class="sidebar-menu-link">friend</div>
+    </div></div>
+</div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><meting-js
+        theme="var(--color-link)"
+        id="2265921590"server="qq"type="song"auto="true"fixed="true">
+      </meting-js><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js"
+    integrity="sha384-vLev0II0HKFaxkcm&#43;/7kX5IGwVFBASkGchU311wmU/veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous" ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous" ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax></script><script
+    src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js"
+    integrity="sha384-8LyaidD9GPxQQgLJO/WRw/O2h3BoNq/ApI/ecpvM6RsrCz2qP2ppBXUKihP4V/2d" crossorigin="anonymous"></script><script>
+  if (window.firework) {
+    const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+    options.excludeElements = options.excludeelements;
+    delete options.excludeelements;
+    window.firework(options);
+  }
+</script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "LYJ",
+          title: "ns-3 中 WifiNetDevice 的架构",
+          url: "https:\/\/example.org\/post\/ns-3-%E4%B8%AD-wifinetdevice-%E7%9A%84%E6%9E%B6%E6%9E%84\/",
+          description: "ns-3 中 WifiNetDevice 的架构",
+          cover: "https:\/\/example.org\/image\/2.JPG",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.js"
+    data-pjaxintegrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc&#43;T1b2N&#43;teh/OJfpU0jr6" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/katex@0.16.22/dist/contrib/auto-render.min.js"
+    data-pjaxintegrity="sha384-hCXGrW6PitJEwbkoStFjeJxv&#43;fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script><script data-pjax>
+          var renderMath = () => {
+            if (!window.renderMathInElement) return;
+            window.renderMathInElement(_$("article"), {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+              ],
+            });
+          };
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderMath, { once: true });
+          } else {
+            renderMath();
+          }
+        </script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    asyncintegrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script><script>
+      var meting_api = 'https:\/\/api.metatable.com';
+    </script><script>
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      const meting = _$('meting-js');
+      if (meting) {
+        meting.setAttribute('fixed', 'true');
+        const aside = meting.parentNode?.parentNode;
+        if (aside?.tagName === 'ASIDE') {
+          meting.parentNode.removeChild(meting);
+          document.body.appendChild(meting);
+        }
+      }
+    }
+  </script><script
+    src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js"
+    integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8&#43;0maanw1S/IyB&#43;Y4JG&#43;ZDU7GpKE8" crossorigin="anonymous"></script></body>
+</html>
